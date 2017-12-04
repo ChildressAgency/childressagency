@@ -278,8 +278,9 @@ a{
   margin-top:40px;
 }
 .brand{
-  max-width:289px;
   position:relative;
+  height:289px;
+  cursor:pointer;
 }
 .brand img{
   max-width:100%;
@@ -404,6 +405,54 @@ a{
   font-weight:700;
 }
 
+footer{
+  background-color:#5c5b5e;
+  padding-top:40px;
+  padding-bottom:20px;
+  color:#fff;
+}
+.copyright{
+  margin-top:40px;
+  font-size:12px;
+  text-align:center;
+}
+.footer-nav{
+  column-count:2;
+}
+.footer-nav>li{
+  margin-bottom:10px;
+}
+footer a{
+  color:#fff;
+}
+footer a:hover,
+footer a:focus{
+  color:#f18f23;
+  text-decoration:none;
+}
+footer .social{
+  max-width:115px;
+  margin-left:auto;
+  margin-right:auto;
+}
+footer .social>a{
+  display:block;
+  margin-bottom:10px;
+  background-color:#666;
+  padding:0px 5px;
+}
+footer .social>a>.fa{
+  margin-right:3px;
+}
+.footer-col-inner{
+  max-width:250px;
+  margin-left:auto;
+  margin-right:auto;
+}
+footer p.hours>span{
+  font-variant:small-caps;
+}
+
 
 @media (max-width:767px){
   #hp-hero .caption>h1{
@@ -435,5 +484,21 @@ a{
 @media (min-width:768px) and (max-width:990px){
   #whatWeDo h1{
     font-size:62px;
+  }
+  .brand{
+    height:240px;
+  }
+}
+@media (max-width:990px){
+  footer .col-sm-6{
+    margin-top:40px;
+  }
+}
+@media (min-width:991px){
+  footer .col-sm-6{
+    border-left:1px solid #848586;
+  }
+  footer .col-sm-6:first-child{
+    border:none;
   }
 }
