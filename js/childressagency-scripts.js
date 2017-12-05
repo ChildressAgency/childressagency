@@ -11,7 +11,7 @@ $.fn.accordionGrid = function(){
   var rows = Math.floor(brands.find('.brand').length / cols);
 
   //layout the grid
-  brands.find('.brand').each(function(index){
+/*   brands.find('.brand').each(function(index){
     var self = $(this);
     $(self).attr('data-brand_index', index);
     var col = (index % cols);
@@ -19,6 +19,8 @@ $.fn.accordionGrid = function(){
 
     resetBrandSize(self, index);
   });
+ */
+  setGrid();
 
   brands.find('.brand').hover(function(){
     var index = $(this).data('brand_index');
@@ -39,34 +41,42 @@ $.fn.accordionGrid = function(){
       top: 0,
       left: leftPos
     });
+    //squish the other brand blocks
     $('.brand:not([data-col=' + col_number + '])').animate({
       'width': blockSize / 2,
       'left': (col_number * blockSize) + (blockSize / 2)
     });
   }, function(){
-    var self = $(this);
-    var index = self.data('brand_index');
+    //var self = $(this);
+    //var index = self.data('brand_index');
     //var col = index % cols;
-    resetBrandSize(self, index);
+    //resetBrandSize(self, index);
+    setGrid();
   });
 
-  function resetBrandSize(self, index){
-    var row = Math.floor(index / cols);
-    var col_number = $(self).data('col');
-    var leftPos = col_number * blockSize;
-    var topPos = row * blockSize;
-    var smallImage = $(self).data('small_image');
+  function setGrid(){
+    brands.find('.brand').each(function(index){
+      var brand = $(this);
+      var row = Math.floor(index / cols);
+      var col = index % cols;
+      var leftPos = col * blockSize;
+      var topPos = row * blockSize;
 
-    $(self).clearQueue();
-    $(self).stop(); 
-    $(self).animate({
-      width: blockSize,
-      height: blockSize,
-      top: topPos,
-      left: leftPos
-    }, 400, function(){
-      $(self).css('z-index', '0');
-      $(self).css('background-image', 'url(' + smallImage + ')');
+      $(brand).attr('data-brand_index', index);
+      $(brand).attr('data-col', col);
+      var smallImage = $(brand).data('small_image');
+
+      $(brand).clearQueue();
+      $(brand).stop(); 
+      $(brand).animate({
+        width: blockSize,
+        height: blockSize,
+        top: topPos,
+        left: leftPos
+      }, 400, function(){
+        $(brand).css('z-index', '0');
+        $(brand).css('background-image', 'url(' + smallImage + ')');
+      });
     });
   }
 }
