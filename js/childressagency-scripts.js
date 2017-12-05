@@ -8,87 +8,109 @@ $.fn.accordionGrid = function(){
     cols = 2;
   }
 
+  //set the height of the grid container (to push down the 
+  // element below it)
   var rows = Math.floor(brands.find('.brand').length / cols);
+  brands.css('height', rows * blockSize);
 
-  //layout the grid
-/*   brands.find('.brand').each(function(index){
-    var self = $(this);
-    $(self).attr('data-brand_index', index);
-    var col = (index % cols);
-    $(self).attr('data-col', col);
-
-    resetBrandSize(self, index);
-  });
- */
   setGrid();
 
   brands.find('.brand').hover(function(){
-    var index = $(this).data('brand_index');
+    var brandBlock = $(this);
+    var index = $(brandBlock).data('brand_index');
     //var col = index % cols;
-    var col_number = $(this).data('col');
+    var col_number = $(brandBlock).data('col');
     var leftPos = col_number * (blockSize / 2);
-    var largeImage = $(this).data('large_image');
+    var largeImage = $(brandBlock).data('large_image');
 
-    $(this).css('z-index', '99');
+    $(brandBlock).css('z-index', '99');
     if(typeof largeImage !== 'undefined' || largeImage){
-      $(this).css('background-image', 'url(' + largeImage + ')');
+      $(brandBlock).css('background-image', 'url(' + largeImage + ')');
     }
-    $(this).clearQueue();
-    $(this).stop();
-    $(this).animate({
+    $(brandBlock).find('.caption').addClass('right-arrow');
+    $(brandBlock).clearQueue();
+    $(brandBlock).stop();
+    $(brandBlock).animate({
       height: blockSize * 2,
       width: blockSize * 2,
       top: 0,
       left: leftPos
     });
+
     //squish the other brand blocks
-    $('.brand:not([data-col=' + col_number + '])').animate({
-      'width': blockSize / 2,
-      'left': (col_number * blockSize) + (blockSize / 2)
-    });
+    //$('.brand:not([data-col=' + col_number + '])').animate({
+    //  'width': blockSize / 2,
+    //  'left': (col_number * blockSize) + (blockSize / 2)
+    //});
+    squishOtherBlocks(col_number);
+
   }, function(){
-    //var self = $(this);
-    //var index = self.data('brand_index');
-    //var col = index % cols;
-    //resetBrandSize(self, index);
     setGrid();
   });
 
   function setGrid(){
     brands.find('.brand').each(function(index){
-      var brand = $(this);
+      var brandBlock = $(this);
       var row = Math.floor(index / cols);
       var col = index % cols;
       var leftPos = col * blockSize;
       var topPos = row * blockSize;
 
-      $(brand).attr('data-brand_index', index);
-      $(brand).attr('data-col', col);
-      var smallImage = $(brand).data('small_image');
+      $(brandBlock).attr('data-brand_index', index);
+      $(brandBlock).attr('data-col', col);
+      var smallImage = $(brandBlock).data('small_image');
+      $(brandBlock).removeClass('big-caption');
+      $(brandBlock).find('.caption').removeClass('right-arrow');
 
-      $(brand).clearQueue();
-      $(brand).stop(); 
-      $(brand).animate({
+      $(brandBlock).clearQueue();
+      $(brandBlock).stop(); 
+      $(brandBlock).animate({
         width: blockSize,
         height: blockSize,
         top: topPos,
         left: leftPos
       }, 400, function(){
-        $(brand).css('z-index', '0');
-        $(brand).css('background-image', 'url(' + smallImage + ')');
+        $(brandBlock).css('z-index', '0');
+        $(brandBlock).css('background-image', 'url(' + smallImage + ')');
       });
     });
+  }
+  function squishOtherBlocks(col_number){
+    $('.brand').addClass('big-caption');
+    switch(col_number){
+      case 0:
+        $('[data-col=1]').animate({
+          'width': blockSize / 2,
+          'left': (1 * blockSize) + (blockSize)
+        });
+        $('[data-col=2]').animate({
+          'width': blockSize / 2,
+          'left': (2 * blockSize) + (blockSize / 2)
+        });
+      break;
+      case 1:
+        $('[data-col=0]').animate({
+          'width': blockSize / 2
+        });
+        $('[data-col=2]').animate({
+          'width': blockSize / 2,
+          'left': (2 * blockSize) + (blockSize / 2)
+        });
+      break;
+      case 2:
+        $('[data-col=0]').animate({
+          'width': blockSize / 2
+        });
+        $('[data-col=1]').animate({
+          'width': blockSize / 2,
+          'left': blockSize / 2
+        });
+    }
   }
 }
 
 jQuery(document).ready(function($){
 
   $('.brands').accordionGrid();
-
-  //$('.brand').hover(function(){
-  //  $(this).addClass('big-brand');
-  //}, function(){
-  //  $(this).removeClass('big-brand');
-  //});
 
 });
