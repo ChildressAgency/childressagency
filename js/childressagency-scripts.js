@@ -3,6 +3,7 @@ $.fn.accordionGrid = function(){
   var brands = this;
   var viewportWidth = $(window).width();
   var cols = 3;
+  var blockSize = 290;
   if((viewportWidth >= 768) && (viewportWidth <= 990)){
     cols = 2;
   }
@@ -12,48 +13,62 @@ $.fn.accordionGrid = function(){
   //layout the grid
   brands.find('.brand').each(function(index){
     var self = $(this);
-    resetGrid(self, index);
+    $(self).attr('data-brand_index', index);
+    var col = (index % cols);
+    $(self).attr('data-col', col);
+
+    resetBrandSize(self, index);
   });
 
   brands.find('.brand').hover(function(){
     var index = $(this).data('brand_index');
-    var col = index % cols;
-    var leftPos = col * 145;
-    $(this).css('z-index', '99');
+    //var col = index % cols;
+    var col_number = $(this).data('col');
+    var leftPos = col_number * (blockSize / 2);
+    var largeImage = $(this).data('large_image');
 
+    $(this).css('z-index', '99');
+    if(typeof largeImage !== 'undefined' || largeImage){
+      $(this).css('background-image', 'url(' + largeImage + ')');
+    }
     $(this).clearQueue();
     $(this).stop();
     $(this).animate({
-      height: 580,
-      width: 580,
+      height: blockSize * 2,
+      width: blockSize * 2,
       top: 0,
       left: leftPos
+    });
+    $('.brand:not([data-col=' + col_number + '])').animate({
+      'width': blockSize / 2,
+      'left': (col_number * blockSize) + (blockSize / 2)
     });
   }, function(){
     var self = $(this);
     var index = self.data('brand_index');
-    resetGrid(self, index);
+    //var col = index % cols;
+    resetBrandSize(self, index);
   });
 
-  function resetGrid(self, index){
+  function resetBrandSize(self, index){
     var row = Math.floor(index / cols);
-    var col = (index % cols);
-    var leftPos = col * 290;
-    var topPos = row * 290;
+    var col_number = $(self).data('col');
+    var leftPos = col_number * blockSize;
+    var topPos = row * blockSize;
+    var smallImage = $(self).data('small_image');
 
-    $(self).attr('data-brand_index', index);
     $(self).clearQueue();
     $(self).stop(); 
     $(self).animate({
-      width: 290,
-      height:290,
+      width: blockSize,
+      height: blockSize,
       top: topPos,
       left: leftPos
     }, 400, function(){
       $(self).css('z-index', '0');
+      $(self).css('background-image', 'url(' + smallImage + ')');
     });
   }
-
 }
 
 jQuery(document).ready(function($){
