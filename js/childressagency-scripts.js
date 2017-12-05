@@ -37,11 +37,6 @@ $.fn.accordionGrid = function(){
       left: leftPos
     });
 
-    //squish the other brand blocks
-    //$('.brand:not([data-col=' + col_number + '])').animate({
-    //  'width': blockSize / 2,
-    //  'left': (col_number * blockSize) + (blockSize / 2)
-    //});
     squishOtherBlocks(col_number);
 
   }, function(){
