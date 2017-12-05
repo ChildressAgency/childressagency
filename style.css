@@ -276,11 +276,16 @@ a{
 
 .brands{
   margin-top:40px;
+  position:relative;
 }
 .brand{
   position:relative;
   height:289px;
   cursor:pointer;
+  background-repeat:no-repeat;
+  background-size:cover;
+  -webkit-transition:width .3s ease, height .3s ease;
+  transition:width .3s ease, height .3s ease;
 }
 .brand img{
   max-width:100%;
@@ -307,6 +312,21 @@ a{
 }
 .brand .caption>p{
   margin-bottom:0;
+}
+
+.brand.big-brand{
+  position:absolute;
+  width:60%;
+  height:100%;
+  top:0;
+  left:0;
+  z-index:9;
+}
+.brand:nth-child(3n+0).big-brand{
+  top:auto;
+  left:auto;
+  bottom:6px;
+  right:10px;
 }
 
 #brands .pager li>a,
@@ -477,8 +497,10 @@ footer p.hours>span{
 }
 @media (min-width:768px){
   .brand{
-    float:left;
-    width:33.33%;
+    /*float:left;*/
+    display:inline-block;
+    width:33%;
+    margin:-3px -2px;
   }
 }
 @media (min-width:768px) and (max-width:990px){
