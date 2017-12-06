@@ -141,6 +141,50 @@ body.trans-down-arrow{
   animation-fill-mode:forwards;
 }
 
+@keyframes shineAnimation{
+  0%{
+    margin-left:-150%;
+  }
+  100%{
+    margin-left:150%;
+  }
+}
+.loader{
+  background: rgba(93,91,94,1);
+  background: -moz-linear-gradient(top, rgba(93,91,94,1) 0%, rgba(61,61,61,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(93,91,94,1)), color-stop(100%, rgba(61,61,61,1)));
+  background: -webkit-linear-gradient(top, rgba(93,91,94,1) 0%, rgba(61,61,61,1) 100%);
+  background: -o-linear-gradient(top, rgba(93,91,94,1) 0%, rgba(61,61,61,1) 100%);
+  background: -ms-linear-gradient(top, rgba(93,91,94,1) 0%, rgba(61,61,61,1) 100%);
+  background: linear-gradient(to bottom, rgba(93,91,94,1) 0%, rgba(61,61,61,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5d5b5e', endColorstr='#3d3d3d', GradientType=0 );
+  position:fixed;
+  height:100%;
+  width:100%;
+  z-index:99999;  
+}
+.loader-shine{
+  animation-name:shineAnimation;
+  animation-duration:2s;
+  animation-timing-function:ease-in-out;
+  animation-iteration-count:infinite;
+  position:absolute;
+  height:50px;
+  width:200%;
+  margin-left:-20%;
+  transform:rotate(-50deg);
+  background:linear-gradient(transparent, rgba(255,255,255,.2),transparent);
+}
+.loader>img{
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin:-44px 0 0 -49px;
+  text-align:center;
+  height:88px;
+  width:98px;
+}
+
 a{
   -webkit-transition:all .3s ease;
   transition:all .3s ease;

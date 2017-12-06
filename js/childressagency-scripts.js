@@ -158,6 +158,13 @@ $.fn.accordionGrid = function(){
   }
 }
 
+$(window).load(function(){
+  setTimeout(removeLoader, 300);
+  function removeLoader(){
+    $('.loader').fadeOut();
+  }
+});
+
 jQuery(document).ready(function($){
 
   $('.brands').accordionGrid();
