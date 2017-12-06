@@ -162,4 +162,14 @@ jQuery(document).ready(function($){
 
   $('.brands').accordionGrid();
 
+  $('a.arrow').on('click', function(e){
+    var self = $(this);
+    var direction = $(this).data('direction');
+    e.preventDefault();
+    $('body').addClass('trans-' + direction);
+    setTimeout(function(){
+      document.location = $(self).attr('href');
+    }, 750);
+  });
+
 });
