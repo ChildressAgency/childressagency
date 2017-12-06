@@ -289,15 +289,19 @@ a{
   margin-top:40px;
   position:relative;
   /*height:580px;*/
+  margin-left:auto;
+  margin-right:auto;
 }
 .brand{
   height:290px;
   cursor:pointer;
   background-repeat:no-repeat;
   background-size:cover;
-  /*-webkit-transition:width .3s ease, height .3s ease;
-  transition:width .3s ease, height .3s ease;*/
+  display:inline-block;
+  width:290px;
+  position:absolute;
 }
+
 .brand img{
   max-width:100%;
 }
@@ -507,26 +511,22 @@ footer p.hours>span{
     background-color:rgba(0,0,0,.6);
   }
   .brand{
-    margin:40px auto 0px;
+    /*margin:40px auto 0px;*/
+    /*position:relative;*/
   }
   #whatWeDo h1{
     font-size:46px;
   }
 }
 @media (min-width:768px){
-  .brand{
-    /*float:left;*/
-    display:inline-block;
-    width:290px;
-    position:absolute;
-  }
+
 }
 @media (min-width:768px) and (max-width:990px){
   #whatWeDo h1{
     font-size:62px;
   }
   .brand{
-    height:240px;
+    /*height:240px;*/
   }
 }
 @media (max-width:990px){
