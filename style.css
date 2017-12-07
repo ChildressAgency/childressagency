@@ -149,18 +149,18 @@ body.trans-down-arrow{
 @keyframes shineAnimation{
   0%{
     opacity:0;
-    margin-left:-125%;
+    margin-left:-180%;
   }
   10%{
     opacity:1;
   }
   30%{
     opacity:0;
-    margin-left:30%;
+    margin-left:-15%;
   }
   100%{
     opacity:0;
-    margin-left:30%;
+    margin-left:-15%;
   }
 }
 .loader{
@@ -185,12 +185,12 @@ body.trans-down-arrow{
   animation-iteration-count:infinite;
   position:absolute;
   height:50px;
-  width:200%;
+  width:300%;
   margin-left:-48%;
   bottom:50%;
   opacity:0;
   transform:rotate(-50deg);
-  background:linear-gradient(transparent, rgba(255,255,255,.2),transparent);
+  background:linear-gradient(transparent, rgba(255,255,255,.3),transparent);
 }
 @keyframes loaderImg{
   0%{
