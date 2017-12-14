@@ -359,6 +359,9 @@ a{
   background-color:#fff;
 }
 
+.hero{
+  background-attachment:fixed;
+}
 #hp-hero{
   position:relative;
   background-repeat:no-repeat;
@@ -387,13 +390,16 @@ a{
   bottom:40px;
   z-index:4;
 }
-#hp-hero .bg-overlay{
+.bg-overlay{
   position:absolute;
   top:0;
   height:100%;
   width:100%;
-  background-color:rgba(0,0,0,.6);
+  background-color:#000;
+  opacity:.6;
   z-index:1;
+  -webkit-transition:opacity .3s ease;
+  transition:opacity .3s ease;
 }
 #hp-hero .caption>h1{
   color:#fff;

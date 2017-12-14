@@ -206,6 +206,34 @@ jQuery(document).ready(function($){
   $('.acf-map').each(function () {
     map = new_map($(this));
   });
+
+  if(typeof $.fn.stellar == 'function'){
+    $(window).stellar();
+  }
+
+  $(window).on('scroll touchmove', function(){
+    var hero = $('.hero');
+    var heroOverlay = $('.hero>.bg-overlay');
+    var heroHeight = hero.height();
+    var heroHeight1 = heroHeight * .25;
+    var heroHeight2 = heroHeight * .5;
+    var heroHeight3 = heroHeight * .75;
+
+    var docPosition = $(document).scrollTop();
+
+    if(docPosition >= heroHeight2){
+      heroOverlay.css('opacity', '.9');
+    }
+    else if(docPosition >= heroHeight1){
+      heroOverlay.css('opacity', '.8');
+    }
+    else if(docPosition > 0){
+      heroOverlay.css('opacity', '.7');
+    }
+    else{
+      heroOverlay.css('opacity', '.6');
+    }
+  });
   
 });
 
