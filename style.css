@@ -506,8 +506,8 @@ a{
 #whatWeDo{
   background-color:#5d5b5e;
   color:#fff;
-  padding-top:60px;
-  padding-bottom:40px;
+  padding-top:120px;
+  padding-bottom:100px;
 }
 #whatWeDo h1{
   font-size:85px;
@@ -521,6 +521,25 @@ a{
   text-transform:uppercase;
   margin-bottom:20px;
   font-weight:500;
+  opacity:0;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+#whatWeDo ul>li.fade-in-up{
+  animation-name:fadeInUp;
+  animation-duration:1s;
+  animation-iteration-count:1;
+  animation-timing-function:ease-out;
+  opacity:1;
 }
 #whatWeDo .arrow{
   margin-top:15px;
@@ -536,6 +555,29 @@ a{
   margin-right:auto;
   margin-left:auto;
 }
+
+/* keyframe from animate.css */
+@keyframes bounce {
+  from, 20%, 53%, 80%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transform: translate3d(0,0,0);
+  }
+
+  40%, 43% {
+    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    transform: translate3d(0, -30px, 0);
+  }
+
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    transform: translate3d(0, -15px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
 .card{
   padding-top:65px;
   position:relative;
@@ -574,6 +616,14 @@ a{
   height:58px;
   width:52px;
   background-position:-179px 0px;
+}
+
+.card:hover:before{
+  animation-name:bounce;
+  animation-duration:1s;
+  animation-iteration-count:1;
+  animation-timing-function:linear;
+  transform-origin:center bottom;
 }
 
 .contact-link{
@@ -646,6 +696,18 @@ footer p.hours>span{
 .acf-map img {
   /*max-width: inherit !important;*/
 }
+.google-map{
+  position:relative;
+}
+.google-map .info-window-wrapper{
+  background-color:#fff;
+  max-width:318px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.google-map .info-window-footer{
+  padding:0px 15px;
+}
 .google-map .info-window-footer h3{
   font-size:14px;
   text-transform:uppercase;
@@ -689,7 +751,12 @@ footer p.hours>span{
   }
 }
 @media (min-width:768px){
-
+  .google-map .info-window-wrapper{
+    position:absolute;
+    top:60px;
+    left:10px;
+    margin-left:0;
+  }
 }
 @media (min-width:768px) and (max-width:990px){
   #whatWeDo h1{

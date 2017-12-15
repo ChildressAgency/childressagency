@@ -212,6 +212,7 @@ jQuery(document).ready(function($){
   }
 
   $(window).on('scroll touchmove', function(){
+    //darken hero overlay
     var hero = $('.hero');
     var heroOverlay = $('.hero>.bg-overlay');
     var heroHeight = hero.height();
@@ -233,7 +234,27 @@ jQuery(document).ready(function($){
     else{
       heroOverlay.css('opacity', '.6');
     }
+
   });
+
+  var inview = new Waypoint.Inview({
+    element: $('#whatWeDo ul')[0],
+    enter: function(direction){
+      var num_list_items = $('#whatWeDo ul>li').length;
+      var i = 0;
+      fadeListIn(i, num_list_items);
+    }
+  });
+
+  function fadeListIn(i, num_list_items){
+    $('#whatWeDo ul>li').eq(i).addClass('fade-in-up');
+    i++;
+    if(i < num_list_items){ 
+      setTimeout(function(){
+        fadeListIn(i, num_list_items); 
+      }, 200);
+    }
+  }
   
 });
 
@@ -313,7 +334,7 @@ function add_marker($marker, map) {
     google.maps.event.addListener(marker, 'click', function () {
       infowindow.open(map, marker);
     });
-    infowindow.open(map,marker);
+    //infowindow.open(map,marker);
   }
 }
 
