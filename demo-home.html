@@ -29,12 +29,10 @@
 </head>
 
 <body>
-  <nav id="header-nav" class="navbar-fixed-top">
+  <nav id="header-nav" class="navbar-fixed-top white-nav">
     <div class="container">
       <div class="navbar-header">
-        <a href="#" class="navbar-brand">
-          <img src="images/logo.png" alt="The Childress Agency Logo" />
-        </a>
+        <a href="#" class="navbar-brand"></a>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
           <span class="sr-only">Toggle Navigation</span>
           <span class="icon-bar"></span>
@@ -70,12 +68,12 @@
     </div>
   </div>
   <section id="services">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-5">
+    <div class="container container-sm-height">
+      <div class="row row-sm-height">
+        <div class="col-sm-5 col-sm-height reveal">
           <div id="reveal-div"></div>
         </div>
-        <div class="col-sm-7">
+        <div class="col-sm-7 col-sm-height">
           <ul class="list-unstyled services">
             <li><a href="#">Marketing Strategy</a></li>
             <li><a href="#">Web Design & Development</a></li>
@@ -88,48 +86,47 @@
     </div>
   </section>
   <section id="case-studies">
-    <div class="case-study">
-      <div class="container">
-        <div class="case-study-summary">
-          <h2>Sunday Rose Cakes</h2>
-          <p>Built a dynamic Brand Identity, Website Design, and Marketing Collateral</p>
-          <a href="#" class="btn-main">View Case Study</a>
-        </div>
-        <div class="case-study-logo">
-          <img src="images/logo-sunday-rose-cakes.png" class="img-responsive center-block" alt="Sunday Rose Cakes Logo" />
-        </div>
+    <div class="case-study" style="background-image:url(images/sunday-rose.jpg);">
+      <div class="case-study-summary">
+        <h2>Sunday Rose Cakes</h2>
+        <p>Built a dynamic Brand Identity, Website Design, and Marketing Collateral</p>
+        <a href="#" class="btn-main">View Case Study</a>
       </div>
+      <div class="case-study-logo">
+        <img src="images/logo-sunday-rose-cakes.png" class="img-responsive center-block" alt="Sunday Rose Cakes Logo" />
+      </div>
+      <div class="overlay" style="background-color:#ff7175;"></div>
     </div>
-    <div class="case-study">
-      <div class="container">
-        <div class="case-study-summary" style="background-image:url(images/football-stadium.jpg);">
-          <h2>Jermon Bushrod</h2>
-          <p>Built a strong and professional Website design and Brand Identity for Jermon Bushrod.</p>
-          <a href="#" class="btn-main">View Case Study</a>
-        </div>
-        <div class="case-study-logo"></div>
+    <div class="case-study" style="background-image:url(images/football-stadium.jpg);">
+      <div class="case-study-summary">
+        <h2>Jermon Bushrod</h2>
+        <p>Built a strong and professional Website design and Brand Identity for Jermon Bushrod.</p>
+        <a href="#" class="btn-main">View Case Study</a>
       </div>
+      <div class="case-study-logo"></div>
+      <div class="overlay" style="background-color:#058d97;"></div>
     </div>
-    <div class="case-study">
-      <div class="container">
-        <div class="case-study-summary">
-          <h2>Davis Defense Group</h2>
-          <p>A Dynamic Website Design</p>
-          <a href="#" class="btn-main">View Case Study</a>
-        </div>
-        <div class="case-study-logo">
-          <img src="logo-davis-defense-group.png" class="img-responsive center-block" alt="Davis Defense Group Logo" />
-        </div>
+    <div class="case-study" style="background-image:url(images/davis-defense.jpg);">
+      <div class="case-study-summary">
+        <h2>Davis Defense Group</h2>
+        <p>A Dynamic Website Design</p>
+        <a href="#" class="btn-main">View Case Study</a>
       </div>
+      <div class="case-study-logo">
+        <img src="images/logo-davis-defense-group.png" class="img-responsive center-block" alt="Davis Defense Group Logo" />
+      </div>
+      <div class="overlay" style="background-color:#123d61;;"></div>
     </div>
-    <div class="case-study">
-      <div class="container">
-        <div class="case-study-summary">
-          <h2>Leaderslink</h2>
-          <p>Built a strong and professional website to provide a platform for LeadersLInk to inform the public how to prevent disasters, respond when they happen and lead a robust recovery.</p>
-          <a href="#" class="btn-main">View Case Study</a>
-        </div>
+    <div class="case-study" style="background-image:url(images/leaderslink.jpg);">
+      <div class="case-study-summary">
+        <h2>Leaderslink</h2>
+        <p>Built a strong and professional website to provide a platform for LeadersLInk to inform the public how to prevent disasters, respond when they happen and lead a robust recovery.</p>
+        <a href="#" class="btn-main">View Case Study</a>
       </div>
+      <div class="case-study-logo">
+        <img src="images/logo-leaderslink.png" class="img-responsive center-block" alt="LeadersLink Logo" />
+      </div>
+      <div class="overlay" style="background-color:#f70001;"></div>
     </div>
   </section>
   <section id="contact">
@@ -161,7 +158,7 @@
               </div>
               <div class="form-group">
                 <label for="message" class="sr-only">Message</label>
-                <textarea id="message" class="form-control" rows="3" placeholder="Message" />
+                <textarea id="message" class="form-control" rows="3" placeholder="Message"></textarea>
               </div>
               <div class="form-group">
                 <label for="budget" class="budget-slider">Approximate Budget: <span id="budget-value">$<span></span></span></label>

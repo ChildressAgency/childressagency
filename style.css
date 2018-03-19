@@ -5,3 +5,158 @@
   Version: 1.0
 */
 
+body{
+  font-family:Roboto, sans-serif;
+  font-size:18px;
+  font-weight:400;
+  color:#000;
+  /*padding-top:80px;*/
+}
+
+a{
+  -webkit-transition:all .3s ease;
+  transition:all .3s ease;
+}
+.overlay{
+  position:absolute;
+  top:0;
+  left:0;
+  height:100%;
+  width:100%;
+}
+
+#header-nav{
+  padding-top:15px;
+  padding-bottom:15px;
+}
+.navbar-brand{
+  display:block;
+  height:35px;
+  width:117px;
+  background-image:url(images/logo.png);
+  background-repeat:no-repeat;
+  background-size:cover;
+  padding:0;
+  margin-top:10px;
+  -webkit-transition:background-image .3s ease;
+  transition:background-image .3s ease;
+}
+.navbar-brand.alt{
+  background-image:url(images/logo-white.png);
+}
+#navbar .nav>li>a{
+  font-size:14px;
+  text-transform:uppercase;
+  color:#000;
+}
+#navbar .nav>li.active>a,
+#navbar .nav>li>a:hover,
+#navbar .nav>li>a:focus{
+  background-color:transparent;
+  color:#f19024;
+}
+.white-nav .navbar-brand{
+  background-image:url(images/logo.png);
+}
+
+#hero.hp-hero{
+  height:100vh;
+}
+.hp-hero .image-side{
+  background-repeat:no-repeat;
+  background-size:cover;
+  position:relative;
+}
+.hp-hero .image-side>.overlay{
+  background-color:#f19024;
+  opacity:.4;
+}
+.hp-hero h1{
+  font-size:72px;
+  font-weight:700;
+  color:#f19024;
+  text-transform:uppercase;
+  margin-top:0;
+  margin-bottom:0;
+}
+.hp-hero h1>span{
+  display:block;
+  margin-top:15px;
+  margin-bottom:15px;
+}
+
+#services .services>li>a{
+  color:#5b5b5e;
+  font-size:36px;
+  font-weight:500;
+  display:block;
+  padding-top:15px;
+  padding-bottom:15px;
+}
+#services .services>li>a:hover,
+#services .services>li>a:focus{
+  text-decoration:none;
+  color:#f19024;
+}
+.reveal{
+  position:relative;
+}
+.reveal #reveal-div{
+  position:absolute;
+  height:165px;
+  width:3px;
+  background-color:#f19024;
+  bottom:100px;
+  left:50%;
+}
+
+.case-study .container-fluid{
+  padding-left:0;
+  padding-right:0;
+}
+.case-study{
+  background-repeat:no-repeat;
+  background-size:cover;
+  height:100vh;
+  width:100%;
+  position:relative;
+  display:table;
+}
+.case-study-summary{
+  display:table-cell;
+  vertical-align:middle;
+}
+.case-study-logo{
+  position:absolute;
+  top:50%;
+  left:50%;
+  -webkit-transform:translate(-50%, -50%);
+  transform:translate(-50%, -50%);
+}
+.case-study .overlay{
+  width:0;
+}
+
+
+@media (min-width:768px){
+  .container-sm-height{
+    display:table;
+  }
+  .row-sm-height{
+    display:table-row;
+  }
+  .col-sm-height{
+    display:table-cell;
+    float:none;
+    vertical-align:middle;
+  }
+  .container-fluid.container-sm-height{
+    height:100%;
+    width:100%;
+    padding-left:0;
+    padding-right:0;
+  }
+  .hp-hero .row{
+    height:400px;
+  }
+}
