@@ -30,12 +30,12 @@ jQuery(document).ready(function($){
 
   var slides = ['#hero', '#services', '#case-study1', '#case-study2', '#case-study3', '#contact'];
 
-  var heroScene = new ScrollMagic.Scene({
-    triggerElement: '.hp-hero',
-    triggerHook: 0
-  })
-  .setClassToggle('.hp-hero', 'is-active')
-  .addTo(controller);
+  //var heroScene = new ScrollMagic.Scene({
+  //  triggerElement: '.hp-hero',
+  //  triggerHook: 0
+  //})
+  //.setClassToggle('.hp-hero', 'is-active')
+  //.addTo(controller);
 
   function loadComplete(){
     $('html, body').scrollTop(0);
@@ -44,9 +44,10 @@ jQuery(document).ready(function($){
     preloaderOutTl
       .set($('body'), { className: '-=is-loading' })
       .set($('#hero'), { className: '+=is-loaded' })
+      .set($('.hp-hero'), {className: '+=is-active'})
       .to($('#pre-loader'), 0.7, {opacity: 0, ease:Power4.easeInOut})
       .set($('#pre-loader'), {className: '+=is-hidden'})
-      .staggerTo($('.slogan-list ul>li'), 1, {transform:'translateX(0)', ease:Power1.easeOut}, .3);
+      .staggerFromTo($('.slogan-list ul>li'), 1, {x: '+=500px'}, {x: 0, ease:Power1.easeOut}, .3);
 
     return preloaderOutTl;
   }
@@ -54,13 +55,13 @@ jQuery(document).ready(function($){
   var pinHeroTl = new TimelineMax();
 
   pinHeroTl
-    .staggerFromTo($('.slogan-list ul>li'), 1, {transform:'translateX(0)'}, {transform:'translateX(-150%)', ease:Power0.easeNone}, .3)
+    .staggerTo($('.slogan-list ul>li'), 1, {x: '-=120%', ease:Power0.easeNone}, .3)
     .to($('.hp-hero .overlay'), 1, {opacity: 1}, .5);
 
   var pinHero = new ScrollMagic.Scene({
     triggerElement: '.hp-hero',
-    triggerHook: 0,
-    duration: "200%"
+    triggerHook: '0',
+    duration: "100%"
   })
   .setPin('.hp-hero')
   .setTween(pinHeroTl)

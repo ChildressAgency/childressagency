@@ -118,7 +118,7 @@ a{
   text-transform:uppercase;
   margin-top:15px;
   margin-bottom:15px;
-  transform:translateX(100%);
+  /*transform:translateX(100%);*/
 }
 .no-js .slogan-list ul>li{
   transform:translateX(0);
