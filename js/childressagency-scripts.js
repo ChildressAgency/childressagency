@@ -32,11 +32,23 @@ jQuery(document).ready(function($){
   
   var $hpHero = $('.hp-hero');
 
+  var caseStudy1BlinderHeight = get_blinder_height();
+  
+  function get_blinder_height(){
+    var heroRowHeight = $('.hp-hero .row').height();
+    var windowHeight = $(window).height();
+    var remainingHeight = windowHeight  - heroRowHeight;
+    var blinderHeight = remainingHeight / 2;
+    return blinderHeight;
+  }
   function loadComplete(){
     $('html, body').scrollTop(0);
+    var $caseStudy1TopBlinder = $('.top-blinder');
+    var $caseStudy1BottomBlinder = $('.bottom-blinder');
     var preloaderOutTl = new TimelineMax();
 
     preloaderOutTl
+      .set([$caseStudy1TopBlinder, $caseStudy1BottomBlinder], { height: get_blinder_height()})
       .set($('body'), { className: '-=is-loading' })
       .set($hpHero, { className: '+=is-loaded' })
       .to($('#pre-loader'), 0.7, {opacity: 0, ease:Power4.easeInOut})
@@ -49,20 +61,21 @@ jQuery(document).ready(function($){
 
   var slideOutSloganTl = new TimelineMax();
 
+
   slideOutSloganTl
     .staggerTo($('.slogan-list ul>li'), .5, {xPercent: '-=120%', ease:Power0.easeNone}, .3)
     .to($('.hp-hero .overlay'), 1, {opacity: 1}, .5)
     .fromTo($('.hp-hero-logo'), 1, {autoAlpha:0}, {autoAlpha:1}, 1)
-    .staggerFromTo($('.services-list ul>li'), 0.5, {y: '+=20', autoAlpha: 0}, {y: 0, autoAlpha:1, ease:Power0.easeIn}, 1.5)
-    .to($('.hp-hero .overlay'), 7, {width: '+=120%', delay: 12}, 2);
-    //.to($('.hp-hero-logo', $('.services-list'), 1, ))
+    .staggerFromTo($('.services-list ul>li'), .5, {y: '+=20', autoAlpha: 0}, {y: 0, autoAlpha:1, ease:Power0.easeIn}, 1)
+    .to($('.hp-hero .overlay'), 7, {width: '+=120%'}, "+=2.5")
+    .to($('.hp-hero'), 1, {autoAlpha: 0}, "-=3");
     //.set($('.hp-hero-logo'), {className: '+=fade-in'})
     //.set($('.services-list'), {className: '+=fade-in-up'});
 
   var slideOutSlogan = new ScrollMagic.Scene({
     triggerElement: '.page-wrapper',
     triggerHook: 0,
-    duration: "700%"
+    duration: "800%"
   })
   .setPin('.page-wrapper')
   .setTween(slideOutSloganTl)

@@ -192,6 +192,28 @@ a{
   text-decoration:none;
   color:#f19024;
 }
+.hp-main{
+  position:relative;
+}
+
+.top-blinder{
+  position:absolute;
+  width:100%;
+  height:0;
+  top:0;
+  z-index:9;
+  background-color:#fff;
+}
+.bottom-blinder{
+  position:absolute;
+  width:100%;
+  height:0;
+  bottom:0;
+  left:0;
+  z-index:9;
+  background-color:#fff;
+}
+
 .reveal{
   position:relative;
 }
