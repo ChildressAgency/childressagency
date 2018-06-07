@@ -31,9 +31,7 @@ jQuery(document).ready(function($){
   var slides = ['#hero', '#services', '#case-study1', '#case-study2', '#case-study3', '#contact'];
   
   var $hpHero = $('.hp-hero');
-
-  var caseStudy1BlinderHeight = get_blinder_height();
-  
+ 
   function get_blinder_height(){
     var heroRowHeight = $('.hp-hero .row').height();
     var windowHeight = $(window).height();
@@ -41,10 +39,12 @@ jQuery(document).ready(function($){
     var blinderHeight = remainingHeight / 2;
     return blinderHeight;
   }
+
+  var $caseStudy1TopBlinder = $('.top-blinder');
+  var $caseStudy1BottomBlinder = $('.bottom-blinder');
+
   function loadComplete(){
     $('html, body').scrollTop(0);
-    var $caseStudy1TopBlinder = $('.top-blinder');
-    var $caseStudy1BottomBlinder = $('.bottom-blinder');
     var preloaderOutTl = new TimelineMax();
 
     preloaderOutTl
@@ -61,7 +61,6 @@ jQuery(document).ready(function($){
 
   var slideOutSloganTl = new TimelineMax();
 
-
   slideOutSloganTl
     .staggerTo($('.slogan-list ul>li'), .5, {xPercent: '-=120%', ease:Power0.easeNone}, .3)
     .to($('.hp-hero .overlay'), 1, {opacity: 1}, .5)
@@ -69,8 +68,6 @@ jQuery(document).ready(function($){
     .staggerFromTo($('.services-list ul>li'), .5, {y: '+=20', autoAlpha: 0}, {y: 0, autoAlpha:1, ease:Power0.easeIn}, 1)
     .to($('.hp-hero .overlay'), 7, {width: '+=120%'}, "+=2.5")
     .to($('.hp-hero'), 1, {autoAlpha: 0}, "-=3");
-    //.set($('.hp-hero-logo'), {className: '+=fade-in'})
-    //.set($('.services-list'), {className: '+=fade-in-up'});
 
   var slideOutSlogan = new ScrollMagic.Scene({
     triggerElement: '.page-wrapper',
