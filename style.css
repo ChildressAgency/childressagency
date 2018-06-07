@@ -86,11 +86,18 @@ a{
 .full-screen{
   height:100vh;
 }
-
+.page-wrapper{
+  position:relative;
+}
 #hero.hp-hero{
   height:100vh;
-  position:relative;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
   overflow:hidden;
+  z-index:9;
+  background-color:#fff;
 }
 .hp-hero .text-side{
   padding-right:0;
@@ -118,7 +125,7 @@ a{
   text-transform:uppercase;
   margin-top:15px;
   margin-bottom:15px;
-  /*transform:translateX(100%);*/
+  transform:translateX(0);
 }
 .no-js .slogan-list ul>li{
   transform:translateX(0);
@@ -136,8 +143,43 @@ a{
   background-color:#f19024;
   opacity:0;
 }
-
-#services .services>li>a{
+.hero-slide{
+  height:100%;
+}
+.slide{
+  position: absolute;
+  height:100%;
+  width:100%;
+  top:0;
+  left:0;
+}
+#services .container-sm-height,
+#services .row-sm-height{
+  height:100%;
+}
+.hp-hero-logo{
+  position:absolute;
+  height:114px;
+  width:90px;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  z-index:5;
+  /*opacity:0;*/
+}
+.hp-hero-logo.fade-in{
+  opacity:1;
+}
+.services-list{
+  /*opacity:0;*/
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+}
+.services-list.fade-in-up{
+  opacity:1;
+}
+.services-list>ul>li>a{
   color:#5b5b5e;
   font-size:36px;
   font-weight:500;
@@ -145,11 +187,33 @@ a{
   padding-top:15px;
   padding-bottom:15px;
 }
-#services .services>li>a:hover,
-#services .services>li>a:focus{
+.services-list>ul>li>a:hover,
+.services-list>ul>li>a:focus{
   text-decoration:none;
   color:#f19024;
 }
+.hp-main{
+  position:relative;
+}
+
+.top-blinder{
+  position:absolute;
+  width:100%;
+  height:0;
+  top:0;
+  z-index:9;
+  background-color:#fff;
+}
+.bottom-blinder{
+  position:absolute;
+  width:100%;
+  height:0;
+  bottom:0;
+  left:0;
+  z-index:9;
+  background-color:#fff;
+}
+
 .reveal{
   position:relative;
 }
