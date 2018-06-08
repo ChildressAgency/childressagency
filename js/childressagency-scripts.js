@@ -30,7 +30,9 @@ jQuery(document).ready(function($){
 
   var slides = ['#hero', '#services', '#case-study1', '#case-study2', '#case-study3', '#contact'];
   
-  var $hpHero = $('.hp-hero');
+  var $hpHero = $('.hp-hero'),
+      $sloganList = $('.slogan-list ul>li'),
+      $servicesList = $('.services-list ul>li');
  
   var blinderHeight = get_blinder_height();
   function get_blinder_height(){
@@ -54,7 +56,7 @@ jQuery(document).ready(function($){
       .set($hpHero, { className: '+=is-loaded' })
       .to($('#pre-loader'), 0.7, {opacity: 0, ease:Power4.easeInOut})
       .set($('#pre-loader'), {className: '+=is-hidden'})
-      .staggerFromTo($('.slogan-list ul>li'), .3, {xPercent: '120%'}, {xPercent: 0, ease:Power1.easeOut}, .3)
+      .staggerFromTo($sloganList, .3, {xPercent: '120%'}, {xPercent: 0, ease:Power1.easeOut}, .3)
       .set($hpHero, {className: '+=is-active'});
 
     return preloaderOutTl;
@@ -62,13 +64,13 @@ jQuery(document).ready(function($){
 
   var slideOutSloganTl = new TimelineMax();
   slideOutSloganTl
-    .staggerTo($('.slogan-list ul>li'), .5, {xPercent: '-=200%', ease:Power0.easeNone}, .3)
+    .staggerTo($sloganList, .5, {xPercent: '-=200%', ease:Power0.easeNone}, .3)
     .to($('.hp-hero .overlay'), 1, {opacity: 1}, "-=0.8");
 
   var addLogoServicesTl = new TimelineMax();
   addLogoServicesTl
     .fromTo($('.hp-hero-logo'), .5, {autoAlpha:0}, {autoAlpha:1})
-    .staggerFromTo($('.services-list ul>li'), .5, {y: '+=20', autoAlpha: 0}, {y: 0, autoAlpha:1, ease:Power0.easeIn}, .2)
+    .staggerFromTo($servicesList, .5, {y: '+=20', autoAlpha: 0}, {y: 0, autoAlpha:1, ease:Power0.easeIn}, .2)
     .add("pauseOnServices");
 
   var stretchOverlayTl = new TimelineMax();
@@ -77,7 +79,7 @@ jQuery(document).ready(function($){
 
   var fadeOutHeroTl = new TimelineMax();
   fadeOutHeroTl
-    .to($('.hp-hero'), 1, {autoAlpha: 0}, "-=5")
+    .to($hpHero, 1, {autoAlpha: 0}, "-=1.8")
     .add("heroFadeOut");
 
   var heroTimeline = new TimelineMax();
