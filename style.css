@@ -41,6 +41,25 @@ a{
   -webkit-transition:all .3s ease;
   transition:all .3s ease;
 }
+.btn-main{
+  display:inline-block;
+  border:1px solid #fff;
+  color:#fff;
+  font-size:14px;
+  background-color:transparent;
+  padding:5px 25px;
+}
+.btn-main:hover,
+.btn-main:focus{
+  background-color:#fff;
+  color:#5b5b5e;
+  text-decoration:none;
+}
+.btn-alt{
+  border-color:#f19024;
+  color:#f19024;
+}
+
 .overlay{
   position:absolute;
   top:0;
@@ -80,7 +99,10 @@ a{
   color:#f19024;
 }
 .white-nav .navbar-brand{
-  background-image:url(images/logo.png);
+  background-image:url(images/logo-white.png);
+}
+.white-nav #navbar .nav>li>a{
+  color:#fff;
 }
 
 .full-screen{
@@ -152,6 +174,7 @@ a{
   width:100%;
   top:0;
   left:0;
+  z-index:8;
 }
 #services .container-sm-height,
 #services .row-sm-height{
@@ -193,7 +216,7 @@ a{
   color:#f19024;
 }
 .hp-main{
-  position:relative;
+  /*position:relative;*/
 }
 
 .top-blinder{
@@ -239,8 +262,29 @@ a{
   display:table;
 }
 .case-study-summary{
-  display:table-cell;
   vertical-align:middle;
+  z-index:4;
+  position:relative;
+  max-width:350px;
+  margin-left:5%;
+  margin-top:150px;
+}
+.case-study-summary>*{
+  position:relative;
+}
+.case-study-summary h2{
+  font-size:32px;
+  text-transform:uppercase;
+  font-weight:700;
+  color:#fff;
+}
+.case-study-summary p{
+  color:#fff;
+  font-weight:300;
+  margin-top:40px;
+}
+.case-study-summary .btn-main{
+  margin-top:20px;
 }
 .case-study-logo{
   position:absolute;
@@ -248,10 +292,36 @@ a{
   left:50%;
   -webkit-transform:translate(-50%, -50%);
   transform:translate(-50%, -50%);
+  z-index:4;
 }
 .case-study .overlay{
-  width:0;
+  z-index:3;
 }
+
+#contact{
+  position: absolute;
+  height:100vh;
+  width:100%;
+  top:0;
+  left:0;
+  z-index:8;
+  background-color:#fff;
+}
+#contact .col-sm-6+.col-sm-6{
+  background-color:#f7f5f5;
+}
+#contact .wrapper h2{
+  font-size:119px;
+  font-weight:700;
+  color:#f19024;
+  text-transform:uppercase;
+}
+.form-control{
+  border-radius:0;
+  font-size:24px;
+  color:#5b5b5e;
+}
+
 
 
 @media (min-width:768px){
@@ -272,7 +342,14 @@ a{
     padding-left:0;
     padding-right:0;
   }
+  #contact .container-fluid.container-sm-height{
+    padding-left:15px;
+    padding-right:15px;
+  }
   .hp-hero .row{
     height:400px;
+  }
+  #contact .row-sm-height{
+    height:100%;
   }
 }

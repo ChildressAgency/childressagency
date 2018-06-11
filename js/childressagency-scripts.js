@@ -28,7 +28,7 @@ jQuery(document).ready(function($){
 
   var controller = new ScrollMagic.Controller();
 
-  var slides = ['#hero', '#services', '#case-study1', '#case-study2', '#case-study3', '#contact'];
+  //var slides = ['#hero', '#services', '#case-study1', '#case-study2', '#case-study3', '#contact'];
   
   var $hpHero = $('.hp-hero'),
       $sloganList = $('.slogan-list ul>li'),
@@ -62,6 +62,14 @@ jQuery(document).ready(function($){
     return preloaderOutTl;
   }
 
+  var pinScene = new ScrollMagic.Scene({
+    triggerElement: '.page-wrapper',
+    triggerHook: 0,
+    duration: "1000%"
+  })
+    .setPin('.page-wrapper')
+    .addTo(controller);
+
   var slideOutSloganTl = new TimelineMax();
   slideOutSloganTl
     .staggerTo($sloganList, .5, {xPercent: '-=200%', ease:Power0.easeNone}, .3)
@@ -70,7 +78,7 @@ jQuery(document).ready(function($){
   var addLogoServicesTl = new TimelineMax();
   addLogoServicesTl
     .fromTo($('.hp-hero-logo'), .5, {autoAlpha:0}, {autoAlpha:1})
-    .staggerFromTo($servicesList, .5, {y: '+=20', autoAlpha: 0}, {y: 0, autoAlpha:1, ease:Power0.easeIn}, .2)
+    .staggerFromTo($servicesList, .5, {y: '+=20', autoAlpha: 0}, {y: 0, autoAlpha:1, ease:Power0.easeIn}, .2, -.3)
     .add("pauseOnServices");
 
   var stretchOverlayTl = new TimelineMax();
@@ -79,34 +87,62 @@ jQuery(document).ready(function($){
 
   var fadeOutHeroTl = new TimelineMax();
   fadeOutHeroTl
-    .to($hpHero, 1, {autoAlpha: 0}, "-=1.8")
-    .add("heroFadeOut");
+    .to($hpHero, 1, {autoAlpha: 0})
+    .add("heroFadeOut")
+    .set($hpHero, {className: '-=is-loaded'})
+    .set($('#case-study1'), {className: '+=is-loaded'});
+
+  var removeBlindersTl = new TimelineMax();
+  removeBlindersTl
+    .fromTo([$caseStudy1TopBlinder, $caseStudy1BottomBlinder], .5, {height: blinderHeight}, {height: 0, ease:Power1.easeOut})
+    .set($('#header-nav'), {className: '+=white-nav'});
 
   var heroTimeline = new TimelineMax();
   heroTimeline
     .add(slideOutSloganTl)
     .add(addLogoServicesTl)
     .add(stretchOverlayTl)
-    .add(fadeOutHeroTl);
-
-  var removeBlindersTl = new TimelineMax();
-  removeBlindersTl
-    .fromTo([$caseStudy1TopBlinder, $caseStudy1BottomBlinder], .5, {height: blinderHeight}, {height: 0, ease:Power1.easeOut}, "heroFadeOut");
-  
-
-  var masterTimeline = new TimelineMax();
-  masterTimeline
-    .add(heroTimeline)
+    .add(fadeOutHeroTl)
     .add(removeBlindersTl);
 
-  //var slideOutSlogan = new ScrollMagic.Scene({
-  var heroScene = new ScrollMagic.Scene({
+  //case study timeline
+  var caseStudySlides = ['#case-study1', '#case-study2', '#case-study3', '#case-study4'];
+  var caseStudyTl = new TimelineMax();
+  var slide = $('.slide');
+
+  for(var i=0; i<caseStudySlides.length; i++){
+    var $overlay = $(slide[i]).find('.overlay');
+    var $caseStudyLogo = $(slide[i]).find('.case-study-logo');
+    var $caseStudySummary = $(slide[i]).find('.case-study-summary>*');
+
+    caseStudyTl
+      .fromTo($overlay, 1, {width:0}, {width:"50%"})
+      .fromTo($caseStudyLogo, .5, {autoAlpha:0}, {autoAlpha:1})
+      .staggerFromTo($caseStudySummary, .1, {autoAlpha:0, top:50}, {autoAlpha:1, top:0}, .2, "-=.5")
+      .to($overlay, 1, {width:"100%"}, "+=2");
+
+    if((i+1) < caseStudySlides.length){
+      caseStudyTl.fromTo(slide[i + 1], 1, {x: "-100%"}, {x:"0%"});
+    }
+  }
+
+  var contactTl = new TimelineMax();
+  contactTl
+    .fromTo($('#contact'), 1, {x:"-100%"}, {x: "0%"}, "-=5")
+    .set($('#header-nav'), {className: '-=white-nav'});
+    
+  var masterHomepageTimeline = new TimelineMax();
+  masterHomepageTimeline
+    .add(heroTimeline)
+    .add(caseStudyTl)
+    .add(contactTl);
+
+  var homepageScene = new ScrollMagic.Scene({
     triggerElement: '.page-wrapper',
     triggerHook: 0,
-    duration: "700%"
+    duration: "1000%"
   })
-  .setPin('.page-wrapper')
-  .setTween(masterTimeline)
-  .addTo(controller);
+    .setTween(masterHomepageTimeline)
+    .addTo(controller);
 
 });
