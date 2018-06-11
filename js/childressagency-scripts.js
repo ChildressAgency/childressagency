@@ -65,7 +65,7 @@ jQuery(document).ready(function($){
   var pinScene = new ScrollMagic.Scene({
     triggerElement: '.page-wrapper',
     triggerHook: 0,
-    duration: "1000%"
+    duration: "1200%"
   })
     .setPin('.page-wrapper')
     .addTo(controller);
@@ -128,9 +128,10 @@ jQuery(document).ready(function($){
 
   var contactTl = new TimelineMax();
   contactTl
-    .fromTo($('#contact'), 1, {x:"-100%"}, {x: "0%"}, "-=5")
+    .fromTo($('#contact'), 1, {x:"-100%"}, {x: "0%"})
+    .fromTo($('#contact .wrapper h2'), .5, {autoAlpha:0, marginTop:50}, {autoAlpha:1, marginTop:0})
     .set($('#header-nav'), {className: '-=white-nav'});
-    
+
   var masterHomepageTimeline = new TimelineMax();
   masterHomepageTimeline
     .add(heroTimeline)
