@@ -65,7 +65,7 @@ jQuery(document).ready(function($){
   var pinScene = new ScrollMagic.Scene({
     triggerElement: '.page-wrapper',
     triggerHook: 0,
-    duration: "1200%"
+    duration: "1400%"
   })
     .setPin('.page-wrapper')
     .addTo(controller);
@@ -141,9 +141,32 @@ jQuery(document).ready(function($){
   var homepageScene = new ScrollMagic.Scene({
     triggerElement: '.page-wrapper',
     triggerHook: 0,
-    duration: "1000%"
+    duration: "1200%"
   })
     .setTween(masterHomepageTimeline)
     .addTo(controller);
+
+  
+  //budget slider
+  var budgetSlider = $('.budget-slider').bootstrapSlider({
+    id: 'budgetSlider',
+    min: 500,
+    max: 50000,
+    step: 500,
+    value: 3000,
+    tooltip: 'hide',
+    handle: 'square'
+  });
+  budgetSlider.on('slide slideStop', function(slideEvent){
+    var plus = '';
+    if(slideEvent.value == 50000){ plus = '+'; }
+    $('#budget-value>span').text(slideEvent.value + plus).digits();
+  });
+
+  $.fn.digits = function(){
+    return this.each(function(){
+      $(this).text($(this).text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+    });
+  }
 
 });

@@ -12,7 +12,8 @@
 
   <title>The Childress Agency</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" media="all" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+  <link rel="stylesheet" href="css/bootstrap-slider.min.css" type="text/css" media="all" />
   <link rel="stylesheet" id="childressagency-css" href="style.css" type="text/css" media="all" />
 
   <script>document.documentElement.classList.remove('no-js');</script>
@@ -23,6 +24,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap-slider.min.js"></script>
   <script type="text/javascript" src="js/childressagency-scripts.js"></script>
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -189,8 +191,8 @@
                   <textarea id="message" class="form-control" rows="3" placeholder="Message"></textarea>
                 </div>
                 <div class="form-group">
-                  <label for="budget" class="budget-slider">Approximate Budget: <span id="budget-value">$<span></span></span></label>
-                  <input type="text" class="form-control" />
+                  <label for="budget" class="budget-slider-label">Approximate Budget: <span id="budget-value">$<span>3,000</span></span></label>
+                  <input type="text" id="budget" name="budget" class="budget-slider" />
                 </div>
                 <div class="form-group">
                   <span class="wpcf7-form-control-wrap wrap-type">

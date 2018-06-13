@@ -309,6 +309,9 @@ button{
   z-index:8;
   background-color:#fff;
 }
+#contact .container-fluid{
+  padding-right:0;
+}
 #contact .col-sm-6+.col-sm-6{
   background-color:#f7f5f5;
 }
@@ -328,6 +331,16 @@ button{
   font-size:20px;
   color:#5b5b5e;
 }
+.contact-form .wpcf7-form-control-wrap{
+  width:24%;
+  display:inline-block;
+  text-align:center;
+  vertical-align: top;
+  margin-top:25px;
+}
+.contact-form .wpcf7-checkbox label{
+  cursor:pointer;
+}
 .contact-form input[type="checkbox"]{
   position:absolute;
   opacity:0;
@@ -337,6 +350,9 @@ button{
   display:inline-block;
   padding-top:40px;
   text-align:center;
+  font-size:14px;
+  font-weight:400;
+  color:#5b5b5e;
 }
 .contact-form input[type="checkbox"] + .wpcf7-list-item-label:before{
   content:"";
@@ -348,9 +364,39 @@ button{
   right:0;
   background-image:url(images/sprites.png);
   background-position:0 0;
+  margin-left:auto;
+  margin-right:auto;
 }
 .contact-form input[type="checkbox"]:checked + .wpcf7-list-item-label:before{
   background-position:-34px 0px;
+}
+.budget-slider-label{
+  font-size:24px;
+  color:#5b5b5e;
+  font-weight:400;
+}
+.budget-slider-label span{
+  color:#f19024;
+}
+#budgetSlider{
+  width:100%;
+  margin-top:15px;
+}
+#budgetSlider .slider-track{
+  background-image:none;
+  background-color:#5b5b5e;
+  height:2px;
+}
+#budgetSlider .slider-selection{
+  background-image:none;
+}
+#budgetSlider .slider-handle{
+  height:15px;
+  width:15px;
+  top:-2px;
+  background-color:#f19024;
+  background-image:none;
+  cursor:pointer;
 }
 
 #footer{
