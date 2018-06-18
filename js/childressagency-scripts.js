@@ -62,6 +62,8 @@ jQuery(document).ready(function($){
     return preloaderOutTl;
   }
 
+  var $viewportWidth = $(window).width();
+ 
   var pinScene = new ScrollMagic.Scene({
     triggerElement: '.page-wrapper',
     triggerHook: 0,
@@ -82,8 +84,10 @@ jQuery(document).ready(function($){
     .add("pauseOnServices");
 
   var stretchOverlayTl = new TimelineMax();
-  stretchOverlayTl
-    .to($('.hp-hero .overlay'), 1, {width: '+=120%'}, "pauseOnServices+=1");
+  if($viewportWidth > 767){
+    stretchOverlayTl
+      .to($('.hp-hero .overlay'), 1, {width: '+=120%'}, "pauseOnServices+=1");
+  }
 
   var fadeOutHeroTl = new TimelineMax();
   fadeOutHeroTl
@@ -93,9 +97,17 @@ jQuery(document).ready(function($){
     .set($('#case-study1'), {className: '+=is-loaded'});
 
   var removeBlindersTl = new TimelineMax();
-  removeBlindersTl
-    .fromTo([$caseStudy1TopBlinder, $caseStudy1BottomBlinder], .5, {height: blinderHeight}, {height: 0, ease:Power1.easeOut})
-    .set($('#header-nav'), {className: '+=white-nav'});
+  if($viewportWidth > 767){
+    removeBlindersTl
+      .fromTo([$caseStudy1TopBlinder, $caseStudy1BottomBlinder], .5, {height: blinderHeight}, {height: 0, ease:Power1.easeOut});
+      //.set($('#header-nav'), { className: '+=white-nav' });
+  }
+  else{
+    removeBlindersTl
+      .set([$caseStudy1TopBlinder, $caseStudy1BottomBlinder], {display:'none'});
+      //.set($('#header-nav'), { className: '+=white-nav' });
+  }
+  removeBlindersTl.set($('#header-nav'), {className: '+=white-nav'});
 
   var heroTimeline = new TimelineMax();
   heroTimeline
@@ -110,27 +122,37 @@ jQuery(document).ready(function($){
   var caseStudyTl = new TimelineMax();
   var slide = $('.slide');
 
-  for(var i=0; i<caseStudySlides.length; i++){
-    var $overlay = $(slide[i]).find('.overlay');
-    var $caseStudyLogo = $(slide[i]).find('.case-study-logo');
-    var $caseStudySummary = $(slide[i]).find('.case-study-summary>*');
+  if($viewportWidth > 767){
+    for(var i=0; i<caseStudySlides.length; i++){
+      var $overlay = $(slide[i]).find('.overlay');
+      var $caseStudyLogo = $(slide[i]).find('.case-study-logo');
+      var $caseStudySummary = $(slide[i]).find('.case-study-summary>*');
 
-    caseStudyTl
-      .fromTo($overlay, 1, {width:0}, {width:"50%"})
-      .fromTo($caseStudyLogo, .5, {autoAlpha:0}, {autoAlpha:1})
-      .staggerFromTo($caseStudySummary, .1, {autoAlpha:0, top:50}, {autoAlpha:1, top:0}, .2, "-=.5")
-      .to($overlay, 1, {width:"100%"}, "+=2");
+      //if($viewportWidth > 767){
+      //  caseStudyTl.fromTo($overlay, 1, {width:0}, {width:"50%"});
+      //}
+      //else{
+      //  caseStudyTl.set($overlay, {width:"100%"});
+      //}
+      caseStudyTl
+        .fromTo($overlay, 1, {width:0}, {width:"50%"})
+        .fromTo($caseStudyLogo, .5, {autoAlpha:0}, {autoAlpha:1})
+        .staggerFromTo($caseStudySummary, .1, {autoAlpha:0, top:50}, {autoAlpha:1, top:0}, .2, "-=.5")
+        .to($overlay, 1, {width:"100%"}, "+=2");
 
-    if((i+1) < caseStudySlides.length){
-      caseStudyTl.fromTo(slide[i + 1], 1, {x: "-100%"}, {x:"0%"});
+      if(((i+1) < caseStudySlides.length) && slide.length > 0){
+        caseStudyTl.fromTo(slide[i+1], 1, {x: "-100%"}, {x:"0%"});
+      }
     }
   }
-
+  
   var contactTl = new TimelineMax();
-  contactTl
-    .fromTo($('#contact'), 1, {x:"-100%"}, {x: "0%"})
-    .fromTo($('#contact .wrapper h2'), .5, {autoAlpha:0, marginTop:50}, {autoAlpha:1, marginTop:0})
-    .set($('#header-nav'), {className: '-=white-nav'});
+  if($viewportWidth > 767){
+    contactTl
+      .fromTo($('#contact.full-screen'), 1, {x:"-100%"}, {x: "0%"})
+      .fromTo($('#contact.full-screen .wrapper h2'), .5, {autoAlpha:0, marginTop:50}, {autoAlpha:1, marginTop:0});
+  }
+  contactTl.set($('#header-nav'), {className: '-=white-nav'});
 
   var masterHomepageTimeline = new TimelineMax();
   masterHomepageTimeline
@@ -168,5 +190,15 @@ jQuery(document).ready(function($){
       $(this).text($(this).text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
     });
   }
+
+  //scroll-header
+  $(window).on('scroll', function(){
+    if($('#header-nav').offset().top > 0){
+      $('.scroll-header').addClass('white-bg');
+    }
+    else{
+      $('.scroll-header').removeClass('white-bg');
+    }
+  });
 
 });
