@@ -201,4 +201,17 @@ jQuery(document).ready(function($){
     }
   });
 
+  var teamMemberTl = new TimelineMax();
+  var $teamMemberRows = $('#meet-the-team .row').toArray();
+
+  $teamMemberRows.forEach(function(row, index){
+    var teamMembersScene = new ScrollMagic.Scene({
+      triggerElement: row,
+      triggerHook: .5,
+      reverse:false
+    })
+      .setTween(TweenMax.fromTo(row, .5, {autoAlpha:0, top:100}, {autoAlpha:1, top:0}))
+      .addTo(controller);
+  });
+
 });
