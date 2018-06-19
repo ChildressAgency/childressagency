@@ -179,11 +179,13 @@ jQuery(document).ready(function($){
     tooltip: 'hide',
     handle: 'square'
   });
-  budgetSlider.on('slide slideStop', function(slideEvent){
-    var plus = '';
-    if(slideEvent.value == 50000){ plus = '+'; }
-    $('#budget-value>span').text(slideEvent.value + plus).digits();
-  });
+  if(budgetSlider){
+    budgetSlider.on('slide slideStop', function(slideEvent){
+      var plus = '';
+      if(slideEvent.value == 50000){ plus = '+'; }
+      $('#budget-value>span').text(slideEvent.value + plus).digits();
+    });
+  }
 
   $.fn.digits = function(){
     return this.each(function(){
