@@ -216,4 +216,46 @@ jQuery(document).ready(function($){
       .addTo(controller);
   });
 
+  //work list page animations
+  function workScissorIn(targetPanelId){
+    var $textSide = $(targetPanelId).find('.text-side');
+    var $imageSide = $(targetPanelId).find('.image-side');
+
+    TweenMax.fromTo($textSide, .5, {y:"-100%"}, {y:"0%", ease: Power2.easeOut});
+    TweenMax.fromTo($imageSide, .5, {y:"100%"}, {y:"0%", ease: Power3.easeOut});
+  }
+
+  $('.work-nav a[data-toggle="tab"]').on('show.bs.tab', function(e){
+    var targetTab = e.target;
+    var targetPanelId = $(targetTab).attr('href');
+
+    TweenMax.set($('.work-details'), {autoAlpha:0});
+    workScissorIn(targetPanelId);
+  });
+
+/*  $('.work-nav a[data-toggle="tab"]').on('hide.bs.tab', function(e){
+    var leavingTab = e.target;
+    var leavingPanelId = $(leavingTab).attr('href');
+    var $leavingPanelWorkSummary = $(leavingPanelId).find('.work-summary')
+
+    TweenMax.set($($leavingPanelWorkSummary), {autoAlpha:1});
+  });*/
+
+  function revealDetails(thisWorkSummary){
+    var $textSide = $(thisWorkSummary).find('.text-side');
+    var $imageSide = $(thisWorkSummary).find('.image-side');
+    var $theDetails = $('.work-details');
+
+    TweenMax.to($textSide, .5, {y:"100%"});
+    TweenMax.to($imageSide, .5, {y:"-100%"});
+    //TweenMax.set($(thisWorkSummary), {autoAlpha:0});
+    TweenMax.to($theDetails, 1, {autoAlpha:1, zIndex:5, ease:Power2.easeIn});
+  }
+
+  $('.work-description').on('click', '.show-work-details', function(){
+    var thisWorkSummary = $(this).parents('.work-summary');
+
+    revealDetails(thisWorkSummary);
+  });
+
 });

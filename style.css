@@ -630,6 +630,14 @@ button{
   -webkit-transform:translate(-50%, -50%);
   transform:translate(-50%, -50%);
   opacity:0;
+  z-index:1;
+  width:100%;
+  max-width:600px;
+}
+.work-details h3{
+  font-size:24px;
+  color:#f19024;
+  text-transform:uppercase;
 }
 .work-description .work-summary,
 .work-description .work-summary>div{
@@ -690,6 +698,10 @@ button{
   margin-top:40px;
   font-size:14px;
   font-weight:300;
+}
+.work-summary{
+  position:relative;
+  z-index:3;
 }
 .work-summary .image-side{
   background-repeat:no-repeat;
