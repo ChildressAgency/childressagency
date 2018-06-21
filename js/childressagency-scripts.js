@@ -255,4 +255,8 @@ jQuery(document).ready(function($){
     revealDetails(thisWorkSummary);
   });
 
+  $('.work-nav').on('click', 'ul>li.active>a', function(e){
+    $(this).parents('ul').toggleClass('open');
+  });
+
 });
