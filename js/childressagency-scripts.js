@@ -216,7 +216,13 @@ jQuery(document).ready(function($){
       .addTo(controller);
   });
 
-  //work list page animations
+  //work list page
+  if($(window).height() < 750){
+    $('#work-list-main').addClass('short-viewport');
+  }
+  else{
+    $('#work-list-main').removeClass('short-viewport');
+  }
   function workScissorIn(targetPanelId){
     var $textSide = $(targetPanelId).find('.text-side');
     var $imageSide = $(targetPanelId).find('.image-side');
@@ -233,22 +239,13 @@ jQuery(document).ready(function($){
     workScissorIn(targetPanelId);
   });
 
-/*  $('.work-nav a[data-toggle="tab"]').on('hide.bs.tab', function(e){
-    var leavingTab = e.target;
-    var leavingPanelId = $(leavingTab).attr('href');
-    var $leavingPanelWorkSummary = $(leavingPanelId).find('.work-summary')
-
-    TweenMax.set($($leavingPanelWorkSummary), {autoAlpha:1});
-  });*/
-
   function revealDetails(thisWorkSummary){
     var $textSide = $(thisWorkSummary).find('.text-side');
     var $imageSide = $(thisWorkSummary).find('.image-side');
     var $theDetails = $('.work-details');
 
-    TweenMax.to($textSide, .5, {y:"100%"});
-    TweenMax.to($imageSide, .5, {y:"-100%"});
-    //TweenMax.set($(thisWorkSummary), {autoAlpha:0});
+    TweenMax.to($textSide, 1, {y:"200%"});
+    TweenMax.to($imageSide, 1, {y:"-200%"});
     TweenMax.to($theDetails, 1, {autoAlpha:1, zIndex:5, ease:Power2.easeIn});
   }
 

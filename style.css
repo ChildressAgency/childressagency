@@ -613,6 +613,9 @@ button{
   line-height:1.2em;
 }
 
+#work-list-main{
+  overflow:hidden;
+}
 #work-list-main .nav-side{
   background-color:#f7f5f5;
 }
@@ -706,6 +709,16 @@ button{
 .work-summary .image-side{
   background-repeat:no-repeat;
   background-size:cover;
+}
+#work-list-main.short-viewport .work-details{
+  overflow:scroll;
+  height:100%;
+  padding-top:75px;
+  padding-bottom:40px;
+}
+#work-list-main.short-viewport .work-nav{
+  height:70vh;
+  overflow:scroll;
 }
 
 
