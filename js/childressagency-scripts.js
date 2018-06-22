@@ -33,6 +33,8 @@ jQuery(document).ready(function($){
   var $hpHero = $('.hp-hero'),
       $sloganList = $('.slogan-list ul>li'),
       $servicesList = $('.services-list ul>li');
+
+  var $headerNav = $('#header-nav');
  
   var blinderHeight = get_blinder_height();
   function get_blinder_height(){
@@ -107,7 +109,7 @@ jQuery(document).ready(function($){
       .set([$caseStudy1TopBlinder, $caseStudy1BottomBlinder], {display:'none'});
       //.set($('#header-nav'), { className: '+=white-nav' });
   }
-  removeBlindersTl.set($('#header-nav'), {className: '+=white-nav'});
+  removeBlindersTl.set($headerNav, {className: '+=white-nav'});
 
   var heroTimeline = new TimelineMax();
   heroTimeline
@@ -152,7 +154,7 @@ jQuery(document).ready(function($){
       .fromTo($('#contact.full-screen'), 1, {x:"-100%"}, {x: "0%"})
       .fromTo($('#contact.full-screen .wrapper h2'), .5, {autoAlpha:0, marginTop:50}, {autoAlpha:1, marginTop:0});
   }
-  contactTl.set($('#header-nav'), {className: '-=white-nav'});
+  contactTl.set($headerNav, {className: '-=white-nav'});
 
   var masterHomepageTimeline = new TimelineMax();
   masterHomepageTimeline
@@ -195,7 +197,7 @@ jQuery(document).ready(function($){
 
   //scroll-header
   $(window).on('scroll', function(){
-    if($('#header-nav').offset().top > 0){
+    if($headerNav.offset().top > 0){
       $('.scroll-header').addClass('white-bg');
     }
     else{
@@ -229,6 +231,7 @@ jQuery(document).ready(function($){
 
     TweenMax.fromTo($textSide, .5, {y:"-100%"}, {y:"0%", ease: Power2.easeOut});
     TweenMax.fromTo($imageSide, .5, {y:"100%"}, {y:"0%", ease: Power3.easeOut});
+    $('#header-nav .navbar-brand').addClass('alt');
   }
 
   $('.work-nav a[data-toggle="tab"]').on('show.bs.tab', function(e){
@@ -236,7 +239,9 @@ jQuery(document).ready(function($){
     var targetPanelId = $(targetTab).attr('href');
 
     TweenMax.set($('.work-details'), {autoAlpha:0});
-    workScissorIn(targetPanelId);
+    if($(window).width() > 767){
+      workScissorIn(targetPanelId);
+    }
   });
 
   function revealDetails(thisWorkSummary){
@@ -247,6 +252,7 @@ jQuery(document).ready(function($){
     TweenMax.to($textSide, 1, {y:"200%"});
     TweenMax.to($imageSide, 1, {y:"-200%"});
     TweenMax.to($theDetails, 1, {autoAlpha:1, zIndex:5, ease:Power2.easeIn});
+    $('#header-nav .navbar-brand').removeClass('alt');
   }
 
   $('.work-description').on('click', '.show-work-details', function(){
@@ -256,7 +262,13 @@ jQuery(document).ready(function($){
   });
 
   $('.work-nav').on('click', 'ul>li.active>a', function(e){
+    e.preventDefault();
     $(this).parents('ul').toggleClass('open');
+  });
+
+  $('.work-nav').on('click', 'ul.open>li>a', function(e){
+    e.preventDefault();
+    $(this).parents('.open').removeClass('open');
   });
 
 });
