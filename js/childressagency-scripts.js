@@ -6,7 +6,7 @@ jQuery(document).ready(function($){
     setTimeout(function () {
       elapsed = true;
       if (loaded) {
-        //removeLoader();
+        removeLoader();
         loadComplete();
       }
     }, 300);
@@ -20,7 +20,7 @@ jQuery(document).ready(function($){
       
       loaded = true;
       if (elapsed) {
-        //removeLoader();
+        removeLoader();
         loadComplete();
       }
     });
@@ -56,8 +56,9 @@ jQuery(document).ready(function($){
       .set([$caseStudy1TopBlinder, $caseStudy1BottomBlinder], { height: blinderHeight})
       .set($('body'), { className: '-=is-loading' })
       .set($hpHero, { className: '+=is-loaded' })
-      .to($('#pre-loader'), 0.7, {opacity: 0, ease:Power4.easeInOut})
-      .set($('#pre-loader'), {className: '+=is-hidden'})
+      .to($('.cs-pre-loader'), .3, {width: 0, ease:Power1.easeOut})
+      //.to($('#pre-loader'), 0.7, {opacity: 0, ease:Power4.easeInOut})
+      //.set($('#pre-loader'), {className: '+=is-hidden'})
       .staggerFromTo($sloganList, .3, {xPercent: '120%'}, {xPercent: 0, ease:Power1.easeOut}, .3)
       .set($hpHero, {className: '+=is-active'});
 
