@@ -239,37 +239,20 @@ jQuery(document).ready(function($){
     var targetTab = e.target;
     var targetPanelId = $(targetTab).attr('href');
 
-    TweenMax.set($('.work-details'), {autoAlpha:0});
+    //TweenMax.set($('.work-details'), {autoAlpha:0});
     if($(window).width() > 767){
       workScissorIn(targetPanelId);
     }
   });
 
-  function revealDetails(thisWorkSummary){
-    var $textSide = $(thisWorkSummary).find('.text-side');
-    var $imageSide = $(thisWorkSummary).find('.image-side');
-    var $theDetails = $('.work-details');
-
-    TweenMax.to($textSide, 1, {y:"200%"});
-    TweenMax.to($imageSide, 1, {y:"-200%"});
-    TweenMax.to($theDetails, 1, {autoAlpha:1, zIndex:5, ease:Power2.easeIn});
-    $('#header-nav .navbar-brand').removeClass('alt');
-  }
-
-  $('.work-description').on('click', '.show-work-details', function(){
-    var thisWorkSummary = $(this).parents('.work-summary');
-
-    revealDetails(thisWorkSummary);
-  });
-
-  $('.work-nav').on('click', 'ul>li.active>a', function(e){
-    e.preventDefault();
-    $(this).parents('ul').toggleClass('open');
-  });
-
-  $('.work-nav').on('click', 'ul.open>li>a', function(e){
-    e.preventDefault();
-    $(this).parents('.open').removeClass('open');
-  });
-
+  //https://github.com/miguel-perez/smoothState.js
+  $('#work-list-main').smoothState({
+    anchors: '.show-work-details',
+    onStart: {
+      duration: 1,
+      render: function($container){
+        $container.find('.wiper').animate({ width:'400%' }, 500);
+      }
+    }
+  })
 });

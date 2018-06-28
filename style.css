@@ -698,6 +698,7 @@ button{
   left:50%;
   -webkit-transform:translate(-50%, -50%);
   transform:translate(-50%, -50%);
+  z-index:2;
 }
 .work-done{
   margin-top:40px;
@@ -715,6 +716,13 @@ button{
 .work-summary{
   position:relative;
   z-index:3;
+}
+.work-summary .text-side .wiper{
+  position:absolute;
+  height:100%;
+  width:100%;
+  margin-left:-15px;
+  z-index:1;
 }
 .work-summary .image-side{
   background-repeat:no-repeat;
