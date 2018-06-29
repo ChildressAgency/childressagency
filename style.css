@@ -1086,6 +1086,65 @@ blockquote::after{
     position:relative;
     display:block;
   }
+  .nav-side ul>li>a{
+    font-size:20px;
+  }
+  #blog-main{
+    overflow-x:hidden;
+  }
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all .25s ease-out;
+         -o-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+  }
+
+  .row-offcanvas-right {
+    right: 0;
+  }
+
+  .row-offcanvas-left {
+    left: 0;
+  }
+
+  .row-offcanvas-right
+  .sidebar-offcanvas {
+    right: -100%; /* 6 columns */
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -100%; /* 6 columns */
+  }
+
+  .row-offcanvas-right.active {
+    right: 100%; /* 6 columns */
+  }
+
+  .row-offcanvas-left.active {
+    left: 100%; /* 6 columns */
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 100%; /* 6 columns */
+    height:100%;
+  }
+  .close-offcanvas{
+    margin-right:24px;
+    font-size:32px;
+    text-align:right;
+    line-height:1em;
+    color:#000;
+  }
+  .open-offcanvas{
+    text-align:right;
+  }
+  .open-offcanvas .btn-main{
+    color:#000;
+    border-color:#000;
+  }
 }
 @media (min-width:768px){
   .container-sm-height{

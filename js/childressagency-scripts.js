@@ -254,5 +254,13 @@ jQuery(document).ready(function($){
         $container.find('.wiper').animate({ width:'400%' }, 500);
       }
     }
-  })
+  });
+
+  $('[data-toggle="offcanvas"]').on('click', function(){
+    $('.row-offcanvas').toggleClass('active');
+  });
+  $('.close-offcanvas').on('click', function(e){
+    e.preventDefault();
+    $('.row-offcanvas').removeClass('active');
+  });
 });
