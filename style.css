@@ -183,7 +183,7 @@ button{
 .scroll-header.white-bg{
   background-color:#fff;
 }
-.scroll-header.white-bg.white-nav .navbar-brand,
+.scroll-header.white-bg .navbar-brand,
 .scroll-header.white-bg .navbar-brand.alt{
   background-image:url(images/logo.png) !important;
 }
@@ -195,6 +195,12 @@ button{
 .scroll-header.white-bg.white-nav #navbar .nav>li>a:after,
 .scroll-header.white-bg #navbar.white-nav .nav>li>a:after{
   background-color:#000 !important;
+}
+.scroll-header.white-bg .navbar-toggle{
+  border-color:#5b5b53 !important;
+}
+.scroll-header.white-bg .navbar-toggle .icon-bar{
+  background-color:#5b5b5e;
 }
 
 .full-screen{
@@ -892,6 +898,61 @@ blockquote::after{
   color:#f19024;
 }
 
+#contact-main{
+  height:100vh;
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+#contact-main .container-fluid,
+#contact-main .row,
+#contact-main .form-side,
+#contact-main .info-side{
+  height:100%;
+}
+#contact-main .info-side{
+  background-color:#5b5b5e;
+  padding-top:120px;
+}
+#contact-main .form-side{
+  background-color:rgba(91, 91, 91, .6);
+  padding-top:120px;
+}
+#contact-main .contact-info{
+  max-width:305px;
+  margin-left:auto;
+  margin-right:auto;
+}
+#contact-main .contact-info>img{
+  margin-bottom:40px;
+}
+#contact-main .contact-info>p{
+  color:#fff;
+}
+#contact-main .contact-info .btn-main{
+  margin-top:25px;
+}
+#contact-main .contact-form{
+  max-width:435px;
+  margin-left:auto;
+  margin-right:auto;
+}
+#contact-main .budget-slider-label,
+#contact-main .budget-slider-label span,
+#contact-main .contact-form input[type="checkbox"] + .wpcf7-list-item-label{
+  color:#fff;
+}
+#contact-main #budgetSlider .slider-track{
+  background-color:#fff;
+}
+#contact-main .contact-form .btn-alt{
+  color:#fff;
+  border-color:#fff;
+}
+#contact-main .contact-form .btn-alt:hover,
+#contact-main .contact-form .btn-alt:focus{
+  color:#5b5b5e;
+}
+
 
 #footer{
   background-color:#f19024;
@@ -971,7 +1032,10 @@ blockquote::after{
     margin-left:0;
   }
   #header-nav .navbar-brand{
-    background-image:url(images/logo.png) !important;
+    background-image:url(images/logo.png);
+  }
+  #header-nav .white-nav .navbar-brand{
+    background-image:url(images/logo-white.png);
   }
   .navbar-toggle{
     border-color:#5b5b5e;
@@ -1144,6 +1208,19 @@ blockquote::after{
   .open-offcanvas .btn-main{
     color:#000;
     border-color:#000;
+  }
+  #contact-main{
+    height:auto;
+  }
+  #contact-main .info-side{
+    padding-bottom:40px;
+  }
+  #contact-main .form-side{
+    padding-top:60px;
+    padding-bottom:60px;
+  }
+  .footer-logo>img{
+    margin-bottom:40px;
   }
 }
 @media (min-width:768px){
