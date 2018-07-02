@@ -24,17 +24,45 @@
 </head>
 
 <body class="is-loading">
-  <div id="pre-loader" class="full-screen pre-loader">
-    <div class="pre-loader-logo">
-      <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/childress-icon-lg.png" alt="Childress Agency Logo" />
+
+  <?php if(is_singular('case_study')): ?>
+
+    <?php $brand_color = get_field('brand_color'); ?>
+
+    <style>
+      h2.brand-color,
+      h3.brand-color{
+        color:<?php echo $brand_color; ?>;
+      } 
+      .cs-pre-loader.brand-color,
+      .cs-links.brand-color{
+        background-color:<?php echo $brand_color; ?>;
+      } 
+      blockquote.brand-color:before{
+        color:<?php echo $brand_color; ?>;
+      }
+      blockquote.brand-color:after{
+        color:<?php echo $brand_color; ?>;
+      }
+    </style>
+    <div id="pre-loader" class="full-screen cs-pre-loader brand-color">
     </div>
-    <span class="wiper"></span>
-  </div>
+
+  <?php else: ?>
+
+    <div id="pre-loader" class="full-screen pre-loader">
+      <div class="pre-loader-logo">
+        <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/childress-icon-lg.png" alt="Childress Agency Logo" />
+      </div>
+      <span class="wiper"></span>
+    </div>
+
+  <?php endif; ?>
 
   <nav id="header-nav" class="navbar-fixed-top scroll-header">
     <div class="container">
       <div class="navbar-header white-nav">
-        <a href="#" class="navbar-brand"></a>
+        <a href="<?php echo home_url(); ?>" class="navbar-brand"></a>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
           <span class="sr-only">Toggle Navigation</span>
           <span class="icon-bar"></span>
@@ -42,13 +70,24 @@
           <span class="icon-bar"></span>
         </button>
       </div>
-      <div id="navbar" class="navbar-collapse collapse white-nav">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="#">Who We Are</a></li>
-          <li><a href="#">Work</a></li>
-          <li><a href="#">News</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
+      <div id="navbar" class="navbar-collapse collapse<?php echo get_field('white_nav_background') ? ' white-nav' : ''; ?>">
+        <?php 
+          $header_nav_args = array(
+            'theme_location' => 'header-nav',
+            'menu' => '',
+            'container' => '',
+            'container_id' => '',
+            'container_class' => '',
+            'menu_class' => 'nav navbar-nav navbar-right',
+            'menu_id' => '',
+            'echo' => true,
+            'fallback_cb' => 'childressagency_header_fallback_menu',
+            'items_wrap' => '<ul id="%1$s" class="%2$s">%3$2</ul>',
+            'depth' => 2,
+            'walker' => new wp_bootstrap_navwalker()
+          );
+          wp_nav_menu($header_nav_args);
+        ?>
       </div>
     </div>
   </nav>
