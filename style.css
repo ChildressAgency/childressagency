@@ -704,9 +704,6 @@ button{
 .work-description .work-summary>div{
   height:100%;
 }
-.work-nav{
-  padding-left:3%;
-}
 .work-nav ul{
   padding-left:45px;
 }
@@ -729,7 +726,7 @@ button{
   background-color:#f19024;
   left:-45px;
   width:0px;
-  top:14px;
+  top:13px;
   -webkit-transition:width .3s ease;
   transition:width .3s ease;
 }
@@ -740,7 +737,7 @@ button{
 }
 .work-summary-inner{
   display:block;
-  width:140px;
+  width:155px;
   position:absolute;
   top:45%;
   left:50%;
@@ -910,8 +907,8 @@ blockquote::after{
   margin-left:auto;
   margin-right:auto;
 }
-.nav-side ul>li>a{
-  font-size:42px;
+#blog-main .nav-side ul>li>a{
+  font-size:30px;
   font-weight:500;
   color:#000;
   display:block;
@@ -921,8 +918,8 @@ blockquote::after{
   -webkit-transition:color .3s ease;
   transition:color .3s ease;
 }
-.nav-side ul>li>a:hover,
-.nav-side ul>li>a:focus{
+#blog-main .nav-side ul>li>a:hover,
+#blog-main .nav-side ul>li>a:focus{
   color:#f19024;
   text-decoration:none;
 }
@@ -1192,7 +1189,7 @@ blockquote::after{
     position:relative;
     display:block;
   }
-  .nav-side ul>li>a{
+  #blog-main .nav-side ul>li>a{
     font-size:20px;
   }
   #blog-main{
@@ -1299,10 +1296,5 @@ blockquote::after{
   }
   .team-member-caption h4{
     font-size:16px;
-  }
-}
-@media (min-width:768px) and (max-width:991px){
-  .nav-side ul>li>a{
-    font-size:32px;
   }
 }
