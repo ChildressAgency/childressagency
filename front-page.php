@@ -35,185 +35,40 @@
 
   <main id="main" class="hp-main main-container">
 
-    <?php if(have_rows())
+    <?php
+      $case_studies = get_field('featured_case_studies');
+      $cs = 1; 
+      foreach($case_studies as $case_study): ?>
 
-    <article id="case-study1" class="slide full-screen" style="z-index:8;">
-      <div class="case-study" style="background-image:url(images/sunday-rose.jpg);">
-        <div class="top-blinder"></div>
-        <section class="case-study-summary">
-          <h2>Sunday Rose Cakes</h2>
-          <p>Built a dynamic Brand Identity, Website Design, and Marketing Collateral</p>
-          <a href="#" class="btn-main">View Case Study</a>
-        </section>
-        <div class="case-study-logo">
-          <img src="images/logo-sunday-rose-cakes.png" class="img-responsive center-block" alt="Sunday Rose Cakes Logo" />
-        </div>
-        <div class="overlay" style="background-color:#ff7175;"></div>
-        <div class="bottom-blinder"></div>
-      </div>
-    </article>
-
-    <article id="case-study2" class="slide full-screen">
-      <div class="case-study" style="background-image:url(images/football-stadium.jpg);">
-        <section class="case-study-summary">
-          <h2>Jermon Bushrod</h2>
-          <p>Built a strong and professional Website design and Brand Identity for Jermon Bushrod.</p>
-          <a href="#" class="btn-main">View Case Study</a>
-        </section>
-        <div class="case-study-logo"></div>
-        <div class="overlay" style="background-color:#058d97;"></div>
-      </div>
-    </article>
-
-    <article id="case-study3" class="slide full-screen">
-      <div class="case-study" style="background-image:url(images/davis-defense.jpg);">
-        <section class="case-study-summary">
-          <h2>Davis Defense Group</h2>
-          <p>A Dynamic Website Design</p>
-          <a href="#" class="btn-main">View Case Study</a>
-        </section>
-        <div class="case-study-logo">
-          <img src="images/logo-davis-defense-group.png" class="img-responsive center-block" alt="Davis Defense Group Logo" />
-        </div>
-        <div class="overlay" style="background-color:#123d61;;"></div>
-      </div>
-    </article>
-
-    <article id="case-study4" class="slide full-screen">
-      <div class="case-study" style="background-image:url(images/leaderslink.jpg);">
-        <section class="case-study-summary">
-          <h2>Leaderslink</h2>
-          <p>Built a strong and professional website to provide a platform for LeadersLInk to inform the public how to prevent disasters, respond when they happen and lead a robust recovery.</p>
-          <a href="#" class="btn-main">View Case Study</a>
-        </section>
-        <div class="case-study-logo">
-          <img src="images/logo-leaderslink.png" class="img-responsive center-block" alt="LeadersLink Logo" />
-        </div>
-        <div class="overlay" style="background-color:#f70001;"></div>
-      </div>
-    </article>
+        <article id="case-study<?php echo $cs; ?>" class="slide full-screen" style="z-index:8;">
+          <div class="case-study" style="background-image:url(<?php the_field('background_image_1', $case_study->ID); ?>);">
+            <?php if($cs == 1){ echo '<div class="top-blinder"></div>'; } ?>
+            <section class="case-study-summary">
+              <h2><?php echo get_the_title($case_study->ID); ?></h2>
+              <p><?php the_field('case_study_summary'); ?></p>
+              <a href="<?php echo get_permalink($case_study->ID); ?>" class="btn-main">View Case Study</a>
+            </section>
+            <div class="case-study-logo">
+              <img src="<?php the_field('white_logo', $case_study->ID); ?>" class="img-responsive center-block" alt="<?php echo get_the_title($case_study->ID); ?> Logo" />
+            </div>
+            <div class="overlay" style="background-color:<?php the_field('brand_color', $case_study->ID); ?>;"></div>
+            <?php if($cs == 1){ echo '<div class="bottom-blinder"></div>'; } ?>
+          </div>
+        </article>
+      
+    <?php $cs++; endforeach; ?>
 
     <article id="contact" class="full-screen">
       <div class="container-fluid container-sm-height">
         <div class="row row-sm-height">
           <div class="col-sm-6 col-sm-height">
             <div class="wrapper">
-              <h2>Let us tell your story</h2>
+              <h2><?php the_field('contact_form_title'); ?></h2>
             </div>
           </div>
           <div class="col-sm-6 col-sm-height">
             <div class="wrapper">
-              <section class="contact-form">
-                <div class="form-group">
-                  <label for="your-name" class="sr-only">Name</label>
-                  <input type="text" id="your-name" class="form-control" placeholder="Name" />
-                </div>
-                <div class="form-group">
-                  <label for="company" class="sr-only">Company</label>
-                  <input type="text" id="company" class="form-control" placeholder="Company" />
-                </div>
-                <div class="form-group">
-                  <label for="phone" class="sr-only">Phone</label>
-                  <input type="text" id="phone" class="form-control" placeholder="Phone" />
-                </div>
-                <div class="form-group">
-                  <label for="your-email" class="sr-only">Email</label>
-                  <input type="email" id="your-email" class="form-control" placeholder="Email" />
-                </div>
-                <div class="form-group">
-                  <label for="message" class="sr-only">Message</label>
-                  <textarea id="message" class="form-control" rows="3" placeholder="Message"></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="budget" class="budget-slider-label">Approximate Budget: <span id="budget-value">$<span>3,000</span></span></label>
-                  <input type="text" id="budget" name="budget" class="budget-slider" />
-                </div>
-                <div class="form-group">
-                  <span class="wpcf7-form-control-wrap wrap-type">
-                    <span class="wpcf7-form-control wpcf7-checkbox">
-                      <span class="wpcf7-list-item first last">
-                        <label>
-                          <input type="checkbox" name="focus" value="Brand Identity" />
-                          <span class="wpcf7-list-item-label">Brand Identity</span>
-                        </label>
-                      </span>
-                    </span>
-                  </span>
-                  <span class="wpcf7-form-control-wrap wrap-type">
-                    <span class="wpcf7-form-control wpcf7-checkbox">
-                      <span class="wpcf7-list-item first last">
-                        <label>
-                          <input type="checkbox" name="focus" value="SEO" />
-                          <span class="wpcf7-list-item-label">SEO</span>
-                        </label>
-                      </span>
-                    </span>
-                  </span>
-                  <span class="wpcf7-form-control-wrap wrap-type">
-                    <span class="wpcf7-form-control wpcf7-checkbox">
-                      <span class="wpcf7-list-item first last">
-                        <label>
-                          <input type="checkbox" name="focus" value="Web Design" />
-                          <span class="wpcf7-list-item-label">Web Design</span>
-                        </label>
-                      </span>
-                    </span>
-                  </span>
-                  <span class="wpcf7-form-control-wrap wrap-type">
-                    <span class="wpcf7-form-control wpcf7-checkbox">
-                      <span class="wpcf7-list-item first last">
-                        <label>
-                          <input type="checkbox" name="focus" value="Video / Photography" />
-                          <span class="wpcf7-list-item-label">Video / Photography</span>
-                        </label>
-                      </span>
-                    </span>
-                  </span>
-                  <span class="wpcf7-form-control-wrap wrap-type">
-                    <span class="wpcf7-form-control wpcf7-checkbox">
-                      <span class="wpcf7-list-item first last">
-                        <label>
-                          <input type="checkbox" name="focus" value="Mobile Apps" />
-                          <span class="wpcf7-list-item-label">Mobile Apps</span>
-                        </label>
-                      </span>
-                    </span>
-                  </span>
-                  <span class="wpcf7-form-control-wrap wrap-type">
-                    <span class="wpcf7-form-control wpcf7-checkbox">
-                      <span class="wpcf7-list-item first last">
-                        <label>
-                          <input type="checkbox" name="focus" value="Social Media" />
-                          <span class="wpcf7-list-item-label">Social Media</span>
-                        </label>
-                      </span>
-                    </span>
-                  </span>
-                  <span class="wpcf7-form-control-wrap wrap-type">
-                    <span class="wpcf7-form-control wpcf7-checkbox">
-                      <span class="wpcf7-list-item first last">
-                        <label>
-                          <input type="checkbox" name="focus" value="Graphic Design" />
-                          <span class="wpcf7-list-item-label">Graphic Design</span>
-                        </label>
-                      </span>
-                    </span>
-                  </span>
-                  <span class="wpcf7-form-control-wrap wrap-type">
-                    <span class="wpcf7-form-control wpcf7-checkbox">
-                      <span class="wpcf7-list-item first last">
-                        <label>
-                          <input type="checkbox" name="focus" value="Print & Promotional" />
-                          <span class="wpcf7-list-item-label">Print & Promotional</span>
-                        </label>
-                      </span>
-                    </span>
-                  </span>
-                </div>
-                <div class="form-group text-center">
-                  <input type="submit" class="btn-main btn-alt" value="Let's Get Started" />
-                </div>
-              </section>
+              <?php echo do_shortcode(get_field('contact_form_shortcode')); ?>
             </div>
           </div>
         </div>
