@@ -52,7 +52,17 @@ function d3systems_scripts(){
   wp_enqueue_script('bootstrap-script');
   wp_enqueue_script('tweenmax');
   wp_enqueue_script('vendors');
-  wp_enqueue_script('childressagency-scripts');  
+  wp_enqueue_script('childressagency-scripts'); 
+  
+  global $wp_query;
+  wp_localize_script(
+    'ajax-pagination', 
+    'ajaxpagination', 
+    array(
+      'ajaxurl' => admin_url('admin-ajax.php'),
+      'query_vars' => json_encode($wp_query->query)
+    )
+  );
 }
 
 add_action('wp_enqueue_scripts', 'childressagency_styles');
@@ -331,4 +341,61 @@ if(function_exists('acf_add_options_page')){
     'capability' => 'edit_posts',
     'redirect' => false
   ));
+}
+
+add_action('wp_ajax_nopriv_ajax_pagination', 'childressagency_ajax_pagination');
+add_action('wp_ajax_ajax_pagination', 'childressagency_ajax_pagination');
+function childressagency_ajax_pagination(){
+  $query_vars = json_decode(stripslashes($_POST['query_vars']), true);
+  $query_vars['paged'] = $_POST['page'];
+  $query_vars['post_status'] = 'publish';
+
+  $posts = new WP_Query($query_vars);
+  $GLOBALS['wp_query'] = $posts;
+
+  $new_post_list = '<ul class="list-unstyled">';
+
+  if($posts->have_posts()){
+    while($posts->have_posts()){
+      $posts->the_post();
+      $new_post_list .= '<li><a href="' . get_permalink() . '" class="view-post" data-post_id="' . get_the_ID() . '">' get_the_title() . '</a></li>';
+    }
+  }
+
+  $new_post_list .= '</ul><div class="pagination">';
+  $new_post_list .= get_the_posts_pagination(array(
+    'mid_size' => 2,
+    'prev_text' => '<<',
+    'next_text' => '>>'
+  ));
+
+  $new_post_list .= '</div>';
+
+  echo $new_post_list;
+
+  die();
+}
+
+add_action('wp_ajax_nopriv_ajax_postload', 'childressagency_ajax_postload');
+add_action('wp_ajax_ajax_postload', 'childressagency_ajax_postload');
+function childressagency_ajax_postload(){
+  $query_vars = json_decode(stripslashes($_POST['query_vars']), true);
+  $query_vars['p'] = $_POST['post_id'];
+
+  $the_post = new WP_Query($query_vars);
+  
+  $new_post = '';
+
+  if($the_post->have_posts()){
+    while($the_post->have_posts()){
+      $the_post->the_post();
+      $new_post .= '<h1>' . get_the_title() . '</h1>';
+      ob_start();
+      the_content();
+      $new_post .= ob_get_clean();
+    }
+  }
+
+  echo $new_post;
+  die();
 }
