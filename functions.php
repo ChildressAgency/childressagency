@@ -358,7 +358,7 @@ function childressagency_ajax_pagination(){
   if($posts->have_posts()){
     while($posts->have_posts()){
       $posts->the_post();
-      $new_post_list .= '<li><a href="' . get_permalink() . '" class="view-post" data-post_id="' . get_the_ID() . '">' get_the_title() . '</a></li>';
+      $new_post_list .= '<li><a href="' . get_permalink() . '" class="view-post" data-post_id="' . get_the_ID() . '">' . get_the_title() . '</a></li>';
     }
   }
 
