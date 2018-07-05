@@ -303,16 +303,16 @@ function childressagency_header_fallback_menu(){ ?>
 add_action('init', 'childressagency_create_post_types');
 function childressagency_create_post_types(){
   $case_study_labels = array(
-    'name' => 'Case Studies',
-    'singular_name' => 'Case Study',
-    'menu_name' => 'Case Studies',
-    'add_new_item' => 'Add New Case Study',
-    'search_items' => 'Search Case Studies',
-    'edit_item' => 'Edit Case Study',
-    'view_item' => 'View Case Study',
-    'all_items' => 'All Case Studies',
-    'new_item' => 'New Case Study',
-    'not_found' => 'No Case Studies Found'
+    'name' => 'Projects',
+    'singular_name' => 'Project',
+    'menu_name' => 'Projects',
+    'add_new_item' => 'Add New Project',
+    'search_items' => 'Search Projects',
+    'edit_item' => 'Edit Project',
+    'view_item' => 'View Project',
+    'all_items' => 'All Projects',
+    'new_item' => 'New Project',
+    'not_found' => 'No Projects Found'
   );
   $case_study_args = array(
     'labels' => $case_study_labels,
@@ -320,7 +320,7 @@ function childressagency_create_post_types(){
     'public' => true,
     'menu_position' => 5,
     'menu_icon' => 'dashicons-analytics',
-    'query_var' => 'case_study',
+    'query_var' => 'project',
     'supports' => array(
       'title',
       'editor',
@@ -330,7 +330,7 @@ function childressagency_create_post_types(){
       'revisions'
     )
   );
-  register_post_type('case_study', $case_study_args);
+  register_post_type('project', $case_study_args);
 }
 
 if(function_exists('acf_add_options_page')){

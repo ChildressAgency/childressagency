@@ -25,7 +25,7 @@
 
 <body class="is-loading">
 
-  <?php if(is_singular('case_study')): ?>
+  <?php if(is_singular('project')): ?>
 
     <?php $brand_color = get_field('brand_color'); ?>
 

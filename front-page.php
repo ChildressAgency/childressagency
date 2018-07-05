@@ -36,27 +36,27 @@
   <main id="main" class="hp-main main-container">
 
     <?php
-      $case_studies = get_field('featured_case_studies');
-      $cs = 1; 
-      foreach($case_studies as $case_study): ?>
+      $projects = get_field('featured_projects');
+      $p = 1; 
+      foreach($projects as $project): ?>
 
-        <article id="case-study<?php echo $cs; ?>" class="slide full-screen" style="z-index:8;">
-          <div class="case-study" style="background-image:url(<?php the_field('background_image_1', $case_study->ID); ?>);">
-            <?php if($cs == 1){ echo '<div class="top-blinder"></div>'; } ?>
+        <article id="case-study<?php echo $p; ?>" class="slide full-screen" style="z-index:8;">
+          <div class="case-study" style="background-image:url(<?php the_field('project_background_image_1', $project->ID); ?>);">
+            <?php if($p == 1){ echo '<div class="top-blinder"></div>'; } ?>
             <section class="case-study-summary">
-              <h2><?php echo get_the_title($case_study->ID); ?></h2>
-              <p><?php the_field('case_study_summary'); ?></p>
-              <a href="<?php echo get_permalink($case_study->ID); ?>" class="btn-main">View Case Study</a>
+              <h2><?php echo get_the_title($project->ID); ?></h2>
+              <p><?php the_field('project_summary'); ?></p>
+              <a href="<?php echo get_permalink($project->ID); ?>" class="btn-main">View Case Study</a>
             </section>
             <div class="case-study-logo">
-              <img src="<?php the_field('white_logo', $case_study->ID); ?>" class="img-responsive center-block" alt="<?php echo get_the_title($case_study->ID); ?> Logo" />
+              <img src="<?php the_field('project_white_logo', $project->ID); ?>" class="img-responsive center-block" alt="<?php echo get_the_title($project->ID); ?> Logo" />
             </div>
-            <div class="overlay" style="background-color:<?php the_field('brand_color', $case_study->ID); ?>;"></div>
-            <?php if($cs == 1){ echo '<div class="bottom-blinder"></div>'; } ?>
+            <div class="overlay" style="background-color:<?php the_field('brand_color', $project->ID); ?>;"></div>
+            <?php if($p == 1){ echo '<div class="bottom-blinder"></div>'; } ?>
           </div>
         </article>
       
-    <?php $cs++; endforeach; ?>
+    <?php $p++; endforeach; ?>
 
     <article id="contact" class="full-screen">
       <div class="container-fluid container-sm-height">
