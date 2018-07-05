@@ -1,4 +1,21 @@
   <footer id="footer">
+    <div class="container">
+      <ul class="social list-unstyled list-inline text-center">
+        <?php if(get_field('facebook', 'option')): ?>
+          <li><a href="<?php the_field('facebook', 'option'); ?>" class="text-hide" target="_blank">Facebook <i class="fab fa-facebook"></i></a></li>
+        <?php endif; if(get_field('twitter', 'option')): ?>
+          <li><a href="<?php the_field('twitter', 'option'); ?>" class="text-hide" target="_blank">Twitter <i class="fab fa-twitter"></i></a></li>
+        <?php endif; if(get_field('instagram', 'option')): ?>
+          <li><a href="<?php the_field('instagram', 'option'); ?>" class="text-hide" target="_blank">Instagram <i class="fab fa-instagram"></i></a></li>
+        <?php endif; if(get_field('google_plus', 'option')): ?>
+          <li><a href="<?php the_field('google_plus', 'option'); ?>" class="text-hide" target="_blank">Google Plus <i class="fab fa-google-plus-g"></i></a></li>
+        <?php endif; if(get_field('linkedin', 'option')): ?>
+          <li><a href="<?php the_field('linkedin', 'option'); ?>" class="text-hide" target="_blank">LinkedIn <i class="fab fa-linkedin-in"></i></a></li>
+        <?php endif; if(get_field('pinterest', 'option')): ?>
+          <li><a href="<?php the_field('pinterest', 'option'); ?>" class="text-hide" target="_blank">Pinterest <i class="fab fa-pinterest-p"></i></a></li>
+        <?php endif; ?>
+      </ul> 
+    </div>
     <div class="container-fluid container-sm-height">
       <div class="row row-sm-height" itemscope itemtype="http://schema.org/LocalBusiness">
         <div class="col-sm-3 col-sm-height">

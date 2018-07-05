@@ -1006,6 +1006,21 @@ blockquote::after{
   font-size:12px;
   font-weight:400;
 }
+#footer .social{
+  margin-bottom:40px;
+}
+#footer .social>li{
+  padding:5px 15px;
+}
+#footer .social>li>a>i{
+  color:#fff;
+  font-size:23px;
+  -webkit-transition:all .3s ease;
+  transition:all .3s ease;
+}
+#footer .social>li>a:hover>i{
+  color:#5b5b5e;
+}
 
 .no-js .is-loading{
   overflow:visible;
