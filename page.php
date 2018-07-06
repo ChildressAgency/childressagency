@@ -10,15 +10,17 @@
             <?php if(have_posts()): while(have_posts()): the_post(); ?>
               <h1><?php the_title(); ?></h1>
               <?php the_content(); ?>
-            <?php endwhile; endif; rewind_posts(); ?>
+            <?php endwhile; endif; ?>
           </article>
         </div>
         <div class="col-sm-6 col-md-5 col-sm-height nav-side sidebar-offcanvas">
           <a href="#" class="close-offcanvas visible-xs">&times;</a>
           <nav class="post-list">
-            <?php if(have_posts()): ?>
+            <?php 
+              $blog_posts = new WP_Query(array('post_type' => 'post'));
+              if($blog_posts->have_posts()): ?>
               <ul class="list-unstyled">
-                <?php while(have_posts()): the_post(); ?>
+                <?php while($blog_posts->have_posts()): $blog_posts->the_post(); ?>
                   <li><a href="<?php the_permalink(); ?>" class="view-post" data-post_id="<?php echo get_the_ID(); ?>"><?php the_title(); ?></a></li>
                 <?php endwhile; ?>
               </ul>
