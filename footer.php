@@ -2,24 +2,24 @@
     <div class="container">
       <ul class="social list-unstyled list-inline text-center">
         <?php if(get_field('facebook', 'option')): ?>
-          <li><a href="<?php the_field('facebook', 'option'); ?>" class="text-hide" target="_blank">Facebook <i class="fab fa-facebook"></i></a></li>
+          <li><a href="<?php esc_url(the_field('facebook', 'option')); ?>" class="text-hide" target="_blank">Facebook <i class="fab fa-facebook"></i></a></li>
         <?php endif; if(get_field('twitter', 'option')): ?>
-          <li><a href="<?php the_field('twitter', 'option'); ?>" class="text-hide" target="_blank">Twitter <i class="fab fa-twitter"></i></a></li>
+          <li><a href="<?php esc_url(the_field('twitter', 'option')); ?>" class="text-hide" target="_blank">Twitter <i class="fab fa-twitter"></i></a></li>
         <?php endif; if(get_field('instagram', 'option')): ?>
-          <li><a href="<?php the_field('instagram', 'option'); ?>" class="text-hide" target="_blank">Instagram <i class="fab fa-instagram"></i></a></li>
+          <li><a href="<?php esc_url(the_field('instagram', 'option')); ?>" class="text-hide" target="_blank">Instagram <i class="fab fa-instagram"></i></a></li>
         <?php endif; if(get_field('google_plus', 'option')): ?>
-          <li><a href="<?php the_field('google_plus', 'option'); ?>" class="text-hide" target="_blank">Google Plus <i class="fab fa-google-plus-g"></i></a></li>
+          <li><a href="<?php esc_url(the_field('google_plus', 'option')); ?>" class="text-hide" target="_blank">Google Plus <i class="fab fa-google-plus-g"></i></a></li>
         <?php endif; if(get_field('linkedin', 'option')): ?>
-          <li><a href="<?php the_field('linkedin', 'option'); ?>" class="text-hide" target="_blank">LinkedIn <i class="fab fa-linkedin-in"></i></a></li>
+          <li><a href="<?php esc_url(the_field('linkedin', 'option')); ?>" class="text-hide" target="_blank">LinkedIn <i class="fab fa-linkedin-in"></i></a></li>
         <?php endif; if(get_field('pinterest', 'option')): ?>
-          <li><a href="<?php the_field('pinterest', 'option'); ?>" class="text-hide" target="_blank">Pinterest <i class="fab fa-pinterest-p"></i></a></li>
+          <li><a href="<?php esc_url(the_field('pinterest', 'option')); ?>" class="text-hide" target="_blank">Pinterest <i class="fab fa-pinterest-p"></i></a></li>
         <?php endif; ?>
       </ul> 
     </div>
     <div class="container-fluid container-sm-height">
       <div class="row row-sm-height" itemscope itemtype="http://schema.org/LocalBusiness">
         <div class="col-sm-3 col-sm-height">
-          <a href="<?php echo home_url(); ?>" class="footer-logo" itemprop="logo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-white.png" alt="The Childress Agency Logo" /></a>
+          <a href="<?php echo esc_url(home_url()); ?>" class="footer-logo" itemprop="logo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-white.png" alt="The Childress Agency Logo" /></a>
         </div>
         <div class="col-sm-6 col-sm-height">
           <div class="row">
@@ -44,7 +44,7 @@
           <div class="copyright">
             <p>&copy; The Childress Agency, Inc <?Php echo date('Y'); ?><br />All Rights Reserved</p>
             <p>
-              <a href="<?php echo home_url('careers'); ?>">Careers</a>
+              <a href="<?php echo esc_url(home_url('careers')); ?>">Careers</a>
               &nbsp;&bull;&nbsp;
               <a href="http://government.childressagency.com" target="_blank">Government</a>
             </p>

@@ -22,7 +22,7 @@
             <div class="services-list">
               <ul class="list-unstyled">
                 <?php if(have_rows('services_links')): while(have_rows('service_links')): the_row(); ?>
-                  <li><a href="<?php the_sub_field('service_link'); ?>"><?php the_field('service_name'); ?></a></li>
+                  <li><a href="<?php esc_url(the_sub_field('service_link')); ?>"><?php the_field('service_name'); ?></a></li>
                 <?php endwhile; endif; ?>
               </ul>              
             </div>
@@ -46,7 +46,7 @@
             <section class="case-study-summary">
               <h2><?php echo get_the_title($project->ID); ?></h2>
               <p><?php the_field('project_summary'); ?></p>
-              <a href="<?php echo get_permalink($project->ID); ?>" class="btn-main">View Case Study</a>
+              <a href="<?php echo esc_url(get_permalink($project->ID)); ?>" class="btn-main">View Case Study</a>
             </section>
             <div class="case-study-logo">
               <img src="<?php the_field('project_white_logo', $project->ID); ?>" class="img-responsive center-block" alt="<?php echo get_the_title($project->ID); ?> Logo" />

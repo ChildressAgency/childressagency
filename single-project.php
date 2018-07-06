@@ -57,9 +57,9 @@
 
     <div class="cs-links brand-color">
       <?php if(get_field('project_link')): ?>
-        <a href="<?php the_field('project_link'); ?>" class="btn-main"><?php the_field('project_link_text'); ?></a>
+        <a href="<?php esc_url(the_field('project_link')); ?>" class="btn-main"><?php the_field('project_link_text'); ?></a>
       <br />
-      <a href="<?php echo home_url('contact'); ?>" class="btn-main">Let's Get Started</a>
+      <a href="<?php echo esc_url(home_url('contact')); ?>" class="btn-main">Let's Get Started</a>
     </div>
 
     <?php
@@ -71,7 +71,7 @@
             <div class="col-sm-6 col-sm-height text-side" style="background-color:<?php the_field('brand_color', $next_project_id); ?>;">
               <div class="next-project">
                 <h3>VIEW NEXT PROJECT</h3>
-                <a href="<?php echo get_permalink($next_project_id); ?>" class="btn-main"><?php echo get_the_title($next_project_id); ?></a>
+                <a href="<?php echo esc_url(get_permalink($next_project_id)); ?>" class="btn-main"><?php echo get_the_title($next_project_id); ?></a>
               </div>
             </div>
             <div class="col-sm-6 col-sm-height image-side" style="background-image:url(images/<?php the_field('background_image_1', $next_project_id); ?>);"></div>

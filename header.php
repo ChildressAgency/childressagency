@@ -62,7 +62,7 @@
   <nav id="header-nav" class="navbar-fixed-top scroll-header">
     <div class="container">
       <div class="navbar-header<?php echo get_field('white_logo_background') ? ' white-nav' : ''; ?>">
-        <a href="<?php echo home_url(); ?>" class="navbar-brand text-hide">Childress Agency</a>
+        <a href="<?php echo esc_url(home_url()); ?>" class="navbar-brand text-hide">Childress Agency</a>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
           <span class="sr-only">Toggle Navigation</span>
           <span class="icon-bar"></span>

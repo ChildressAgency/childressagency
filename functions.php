@@ -292,10 +292,10 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 function childressagency_header_fallback_menu(){ ?>
 
   <ul class="nav navbar-nav navbar-right">
-    <li<?php if(is_page('who-we-are')){ echo ' class="active"'; } ?>><a href="<?php echo home_url('who-we-are'); ?>">Who We Are</a></li>
-    <li<?php if(is_page('work')){ echo ' class="active"'; } ?>><a href="<?php echo home_url('work'); ?>">Work</a></li>
-    <li<?php if(is_page('news')){ echo ' class="active"'; } ?>><a href="<?php echo home_url('blog'); ?>">News</a></li>
-    <li<?php if(is_page('contact')){ echo ' class="active"'; } ?>><a href="<?php echo home_url('contact'); ?>">Contact</a></li>
+    <li<?php if(is_page('who-we-are')){ echo ' class="active"'; } ?>><a href="<?php echo esc_url(home_url('who-we-are')); ?>">Who We Are</a></li>
+    <li<?php if(is_page('work')){ echo ' class="active"'; } ?>><a href="<?php echo esc_url(home_url('work')); ?>">Work</a></li>
+    <li<?php if(is_page('news')){ echo ' class="active"'; } ?>><a href="<?php echo esc_url(home_url('blog')); ?>">News</a></li>
+    <li<?php if(is_page('contact')){ echo ' class="active"'; } ?>><a href="<?php echo esc_url(home_url('contact')); ?>">Contact</a></li>
   </ul> 
 
 <?php }
@@ -358,7 +358,7 @@ function childressagency_ajax_pagination(){
   if($posts->have_posts()){
     while($posts->have_posts()){
       $posts->the_post();
-      $new_post_list .= '<li><a href="' . get_permalink() . '" class="view-post" data-post_id="' . get_the_ID() . '">' . get_the_title() . '</a></li>';
+      $new_post_list .= '<li><a href="' . esc_url(get_permalink()) . '" class="view-post" data-post_id="' . get_the_ID() . '">' . get_the_title() . '</a></li>';
     }
   }
 
