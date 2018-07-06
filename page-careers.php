@@ -24,7 +24,7 @@
                   <div id="collapse<?php echo $c; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<?php echo $c; ?>">
                     <div class="panel-body">
                       <?php the_sub_field('position_details'); ?>
-                      <p class="page-btn"><a href="<?php echo home_url('apply-now?position-title=' . get_sub_field('position_title')); ?>">APPLY NOW</a></p>
+                      <p class="page-btn"><a href="<?php echo esc_url(add_query_arg('position-title', urlencode(get_sub_field('position_title')), home_url('apply-now'))); ?>">APPLY NOW</a></p>
                     </div>
                   </div>
                 </div>
