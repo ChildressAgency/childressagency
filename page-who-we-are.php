@@ -27,32 +27,32 @@
       <div class="container-fluid container-sm-height">
         <div class="row row-sm-height">
           <?php
-            $what_we_do = get_field('what_we_do');
+            $services = get_field('services');
 
-            if($what_we_do): ?>
+            if($services): ?>
 
               <div class="col-sm-4 col-md-3 col-sm-push-8 col-md-push-9 col-sm-height">
                 <div class="what-we-do-nav">
                   <h3>WHAT WE DO</h3>
                   <ul class="list-unstyled" role="tablist">
 
-                    <?php $w = 0; foreach($what_we_do as $what_we_do_nav): ?>
+                    <?php $w = 0; foreach($services as $service): ?>
                       <li role="presentation"<?php if($w==0){ echo ' class="active"'; } ?>>
-                        <a href="#<?php echo sanitize_title($what_we_do_nav['what_we_do_title']); ?>" aria-controls="<?php echo sanitize_title($what_we_do_nav['what_we_do_title']); ?>" role="tab" data-toggle="tab"><?php echo $what_we_do_nav['what_we_do_title']; ?></a>
+                        <a href="#<?php echo sanitize_title($service['service_title']); ?>" aria-controls="<?php echo sanitize_title($service['service_title']); ?>" role="tab" data-toggle="tab"><?php echo $service['service_title']; ?></a>
                       </li>
-                    <?php $w++; endforeach; reset($what_we_do); ?>
+                    <?php $w++; endforeach; reset($services); ?>
 
                   </ul>
                 </div>
               </div>
           
-            <div class="col-sm-8 col-md-9 col-sm-pull-4 col-md-pull-3 col-sm-height image-side" style="background-image:url(<?php the_field('what_we_do_background_image'); ?>); <?php the_field('what_we_do_background_image_css'); ?>">
+            <div class="col-sm-8 col-md-9 col-sm-pull-4 col-md-pull-3 col-sm-height image-side" style="background-image:url(<?php the_field('services_section_background_image'); ?>); <?php the_field('services_section_background_image_css'); ?>">
               <div class="tab-content">
 
-                <?php $i=0; foreach($what_we_do as $what_we_do_info): ?>
-                  <div id="<?php echo sanitize_title($what_we_do_info['what_we_do_title']); ?>" class="tab-pane fade<?php if($i==0){ echo ' in active'; } ?>" role="tabpanel">
-                    <h2><?php $what_we_do_info['what_we_do_title']; ?></h2>
-                    <?php echo $what_we_do_info['what_we_do_content']; ?>
+                <?php $i=0; foreach($services as $service): ?>
+                  <div id="<?php echo sanitize_title($serivce['service_title']); ?>" class="tab-pane fade<?php if($i==0){ echo ' in active'; } ?>" role="tabpanel">
+                    <h2><?php $service['service_title']; ?></h2>
+                    <?php echo $service['service_content']; ?>
                   </div>
                 <?php $i++; endforeach; ?>
 
