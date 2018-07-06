@@ -294,7 +294,7 @@ function childressagency_header_fallback_menu(){ ?>
   <ul class="nav navbar-nav navbar-right">
     <li<?php if(is_page('who-we-are')){ echo ' class="active"'; } ?>><a href="<?php echo home_url('who-we-are'); ?>">Who We Are</a></li>
     <li<?php if(is_page('work')){ echo ' class="active"'; } ?>><a href="<?php echo home_url('work'); ?>">Work</a></li>
-    <li<?php if(is_page('news')){ echo ' class="active"'; } ?>><a href="<?php echo home_url('news'); ?>">News</a></li>
+    <li<?php if(is_page('news')){ echo ' class="active"'; } ?>><a href="<?php echo home_url('blog'); ?>">News</a></li>
     <li<?php if(is_page('contact')){ echo ' class="active"'; } ?>><a href="<?php echo home_url('contact'); ?>">Contact</a></li>
   </ul> 
 
