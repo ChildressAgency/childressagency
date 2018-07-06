@@ -1006,6 +1006,10 @@ blockquote::after{
   font-size:12px;
   font-weight:400;
 }
+#footer .copyright p>a{
+  color:#fff;
+  font-size:14px;
+}
 #footer .social{
   margin-bottom:40px;
 }

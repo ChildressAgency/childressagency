@@ -43,6 +43,11 @@
         <div class="col-sm-3 col-sm-height">
           <div class="copyright">
             <p>&copy; The Childress Agency, Inc <?Php echo date('Y'); ?><br />All Rights Reserved</p>
+            <p>
+              <a href="<?php echo home_url('careers'); ?>">Careers</a>
+              &nbsp;&bull;&nbsp;
+              <a href="http://government.childressagency.com" target="_blank">Government</a>
+            </p>
           </div>
         </div>
       </div>
