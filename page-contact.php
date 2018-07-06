@@ -8,8 +8,8 @@
             <?php $phone_locations = get_field('phone_locations', 'option'); ?>
             <p><?php echo $phone_locations[0]; ?></p>
             <p><?php the_field('street_address', 'option'); ?><br /><?php the_field('city', 'option'); ?>, <?php the_field('state', 'option'); ?> <?php the_field('zip', 'option'); ?></p>
-            <?php if(get_field('free_analysis_link', 'option')): ?>
-              <a href="<?php esc_url(the_field('free_analysis_link', 'option')); ?>" class="btn-main btn-alt">Free Analysis</a>
+            <?php if(get_field('free_analysis_link')): ?>
+              <a href="<?php esc_url(the_field('free_analysis_link')); ?>" class="btn-main btn-alt">Free Analysis</a>
             <?php endif; ?>
           </div>
         </div>
