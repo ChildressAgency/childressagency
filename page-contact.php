@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-  <main id="contact-main" class="main-container" style="background-image:url(images/coffee-laptop.jpg);">
+  <main id="contact-main" class="main-container" style="background-image:url(<?php the_field('background_image'); ?>); <?php the_field('background_image_css'); ?>">
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-4 col-lg-3 info-side">
