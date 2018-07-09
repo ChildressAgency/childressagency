@@ -41,7 +41,9 @@
                   <div class="col-sm-12 col-md-5 text-side">
                     <span class="wiper" style="background-color:<?php the_field('brand_color'); ?>;"></span>
                     <div class="work-summary-inner">
-                      <img src="<?php the_field('project_white_logo'); ?>" class="img-responsive center-block" alt="<?php the_title(); ?>" />
+                      <?php if(get_field('project_white_logo')): ?>
+                        <img src="<?php the_field('project_white_logo'); ?>" class="img-responsive center-block" alt="<?php the_title(); ?>" />
+                      <?php endif; ?>
 
                       <?php if(have_rows('work_done_list')): ?>
                         <ul class="list-unstyled work-done">
