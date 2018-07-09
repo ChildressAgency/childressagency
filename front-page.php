@@ -50,7 +50,9 @@
               <a href="<?php echo esc_url(get_permalink($project)); ?>" class="btn-main">View Case Study</a>
             </section>
             <div class="case-study-logo">
-              <img src="<?php the_field('project_white_logo', $project); ?>" class="img-responsive center-block" alt="<?php echo get_the_title($project); ?> Logo" />
+              <?php if(get_field('project_white_logo', $project)): ?>
+                <img src="<?php the_field('project_white_logo', $project); ?>" class="img-responsive center-block" alt="<?php echo get_the_title($project); ?> Logo" />
+              <?php endif; ?>
             </div>
             <div class="overlay" style="background-color:<?php the_field('brand_color', $project); ?>;"></div>
             <?php if($p == 1){ echo '<div class="bottom-blinder"></div>'; } ?>

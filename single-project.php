@@ -6,7 +6,9 @@
     }
   ?>
   <div id="hero" class="cs-hero" style="background-image:url(<?php echo $background_image; ?>);">
-    <img src="<?php the_field('project_white_logo'); ?>" class="img-responsive center-block" alt="<?php echo get_the_title(); ?> Logo" />
+    <?php if(get_field('project_white_logo')): ?>
+      <img src="<?php the_field('project_white_logo'); ?>" class="img-responsive center-block" alt="<?php echo get_the_title(); ?> Logo" />
+    <?php endif; ?>
   </div>
 
   <main id="cs-main" class="main-container">
