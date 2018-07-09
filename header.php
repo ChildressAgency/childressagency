@@ -59,7 +59,7 @@
 
   <?php endif; ?>
 
-  <nav id="header-nav" class="navbar-fixed-top scroll-header">
+  <nav id="header-nav" class="navbar-fixed-top<?php if(!is_front_page()){ echo ' scroll-header'; } ?>">
     <div class="container">
       <div class="navbar-header<?php echo get_field('white_logo_background') ? ' white-nav' : ''; ?>">
         <a href="<?php echo esc_url(home_url()); ?>" class="navbar-brand text-hide">Childress Agency</a>
