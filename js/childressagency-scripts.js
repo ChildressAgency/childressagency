@@ -1,3 +1,5 @@
+// full screen slider tutorial: https://designmodo.com/create-full-screen-slider/
+
 jQuery(document).ready(function($){
   var loader = (function (window, $loadingScreen) {
     var elapsed = false;
