@@ -46,7 +46,7 @@
             <?php if($p == 1){ echo '<div class="top-blinder"></div>'; } ?>
             <section class="case-study-summary">
               <h2><?php echo get_the_title($project); ?></h2>
-              <p><?php the_field('project_summary'); ?></p>
+              <?php the_field('project_summary', $project); ?>
               <a href="<?php echo esc_url(get_permalink($project)); ?>" class="btn-main">View Case Study</a>
             </section>
             <div class="case-study-logo">
