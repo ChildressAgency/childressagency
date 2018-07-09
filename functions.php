@@ -66,7 +66,7 @@ function d3systems_scripts(){
 }
 
 add_action('wp_enqueue_scripts', 'childressagency_styles');
-function d3systems_styles(){
+function childressagency_styles(){
   wp_register_style('bootstrap-css', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
   wp_register_style('google-fonts', '//fonts.googleapis.com/css?family=Roboto:300,400,500,700');
   wp_register_style('fontawesome', '//use.fontawesome.com/releases/v5.1.0/css/all.css');
