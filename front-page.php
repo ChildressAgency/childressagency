@@ -21,8 +21,9 @@
             </section>
             <div class="services-list">
               <ul class="list-unstyled">
-                <?php if(have_rows('services_links')): while(have_rows('services_links')): the_row(); ?>
-                  <li><a href="<?php esc_url(the_sub_field('service_link')); ?>"><?php the_field('service_name'); ?></a></li>
+                <?php if(have_rows('services_links')): while(have_rows('services_links')): the_row();
+                  $service_link = get_sub_field('service_link'); ?>
+                  <li><a href="<?php echo esc_url($service_link['url']); ?>"><?php echo $service_link['title']; ?></a></li>
                 <?php endwhile; endif; ?>
               </ul>              
             </div>

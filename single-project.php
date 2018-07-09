@@ -56,9 +56,12 @@
     <?php endif; ?>
 
     <div class="cs-links brand-color">
-      <?php if(get_field('project_link')): ?>
-        <a href="<?php esc_url(the_field('project_link')); ?>" class="btn-main"><?php the_field('project_link_text'); ?></a>
-      <br />
+      <?php 
+        $project_link = get_field('project_link');
+        if($project_link): ?>
+          <a href="<?php echo esc_url($project_link['url']); ?>" class="btn-main"><?php echo $project_link['title']; ?></a>
+      <?php endif; ?>
+          <br />
       <a href="<?php echo esc_url(home_url('contact')); ?>" class="btn-main">Let's Get Started</a>
     </div>
 
