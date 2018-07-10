@@ -41,7 +41,7 @@
       $p = 1; 
       foreach($projects as $project): ?>
 
-        <article id="case-study<?php echo $p; ?>" class="slide full-screen" style="z-index:8;">
+        <article id="case-study<?php echo $p; ?>" class="slide full-screen"<?php if($p == 1){ echo ' style="z-index:8;"'; } ?>>
           <div class="case-study" style="background-image:url(<?php the_field('project_background_image_1', $project); ?>);">
             <?php if($p == 1){ echo '<div class="top-blinder"></div>'; } ?>
             <section class="case-study-summary">
