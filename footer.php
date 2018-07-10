@@ -29,7 +29,7 @@
                   $phone_locations = get_field('phone_locations', 'option'); 
                   $phone_locations_count = count($phone_locations);
                   for($i=0; $i<$phone_locations_count; $i++){
-                    echo $phone_locations[$i]['phone_location'] . '<span itemprop="telephone">' . $phone_locations[$i]['phone_number'] . '</span>';
+                    echo $phone_locations[$i]['phone_location'] . ' <span itemprop="telephone">' . $phone_locations[$i]['phone_number'] . '</span>';
                     if($i < ($phone_locations_count - 1)){ echo '<br />'; }
                   }
                 ?>
