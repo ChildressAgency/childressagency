@@ -52,7 +52,7 @@
 
     <div id="pre-loader" class="full-screen pre-loader">
       <div class="pre-loader-logo">
-        <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/childress-icon-lg.png" alt="Childress Agency Logo" />
+        <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-icon-white.png" alt="Childress Agency Logo" />
       </div>
       <span class="wiper"></span>
     </div>
