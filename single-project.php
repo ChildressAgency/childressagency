@@ -79,7 +79,7 @@
                 <a href="<?php echo esc_url(get_permalink($next_project_id)); ?>" class="btn-main"><?php echo get_the_title($next_project_id); ?></a>
               </div>
             </div>
-            <div class="col-sm-6 col-sm-height image-side" style="background-image:url(images/<?php the_field('background_image_1', $next_project_id); ?>);"></div>
+            <div class="col-sm-6 col-sm-height image-side" style="background-image:url(<?php the_field('project_background_image_1', $next_project_id); ?>);"></div>
           </div>
         </div>
     <?php endif; ?>

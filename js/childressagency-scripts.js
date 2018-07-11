@@ -249,17 +249,28 @@ jQuery(document).ready(function($){
   });
 
   //https://github.com/miguel-perez/smoothState.js
-  if(typeof $.fn.smoothState == "function"){
+  /*if(typeof $.fn.smoothState == "function"){
     $('#work-list-main').smoothState({
+      //debug:true,
       anchors: '.show-work-details',
+      cacheLength: 2,
       onStart: {
         duration: 1,
         render: function($container){
           $container.find('.wiper').animate({ width:'400%' }, 500);
         }
+      },
+      onReady:{
+        duration:0,
+        render: function($container, $newContent){
+          $container.html($newContent);
+        }
       }
     });
-  }
+  }*/
+  $('#work-list-main').on('click', '.show-work-details', function(e){
+    $(this).parents('.text-side').find('.wiper').animate({ width:'400%' }, 500);
+  });
 
   $('[data-toggle="offcanvas"]').on('click', function(){
     $('.row-offcanvas').toggleClass('active');
