@@ -43,7 +43,8 @@ function d3systems_scripts(){
 
   wp_register_script(
     'childressagency-scripts', 
-    get_template_directory_uri() . '/js/childressagency-scripts.min.js', 
+    //get_template_directory_uri() . '/js/childressagency-scripts.min.js', 
+    get_template_directory_uri() . '/js/childressagency-scripts.js',
     array('jquery'), 
     '', 
     true

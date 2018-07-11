@@ -433,6 +433,10 @@ button{
   transform:translate(-50%, -50%);
   z-index:4;
 }
+.case-study-logo>img{
+  width:100%;
+  max-width:200px;
+}
 .case-study .overlay{
   z-index:3;
 }
