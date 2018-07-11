@@ -23,7 +23,7 @@
     <![endif]--> 
 </head>
 
-<body class="is-loading">
+<body <?php body_class('is-loading'); ?>>
 
   <?php if(is_singular('project')): ?>
 
