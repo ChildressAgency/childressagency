@@ -14,14 +14,14 @@
               if($projects->have_posts()): ?>
                 <ul class="list-unstyled" role="tablist">
 
-                  <?php while($projects->have_posts()): $projects->the_post(); ?>
+                  <?php $p=0; while($projects->have_posts()): $projects->the_post(); ?>
 
-                    <li role="presentation" class="active">
+                    <li role="presentation"<?php if($p==0){ echo ' class="active"'; } ?>>
                       <?php $project_slug = sanitize_title(get_the_title()); ?>
                       <a href="#<?php echo $project_slug; ?>" aria-controls="<?php echo $project_slug; ?>" role="tab" data-toggle="tab"><?php the_title(); ?></a>
                     </li>
 
-                  <?php endwhile; ?>
+                  <?php $p++; endwhile; ?>
 
                 </ul>
             <?php endif; rewind_posts(); ?>
@@ -33,10 +33,10 @@
         <div class="col-sm-7 col-sm-pull-5 col-md-8 col-md-pull-4 col-sm-height content-side">
           <div class="work-description tab-content">
 
-            <?php if($projects->have_posts()): while($projects->have_posts()): $projects->the_post(); ?>
+            <?php if($projects->have_posts()): $i=0; while($projects->have_posts()): $projects->the_post(); ?>
               <?php $project_slug = sanitize_title(get_the_title()); ?>
 
-              <div id="<?php echo $project_slug; ?>" class="tab-pane active" role="tabpanel">
+              <div id="<?php echo $project_slug; ?>" class="tab-pane<?php if($i==0){ echo ' active'; } ?>" role="tabpanel">
                 <div class="row work-summary">
                   <div class="col-sm-12 col-md-5 text-side">
                     <span class="wiper" style="background-color:<?php the_field('brand_color'); ?>;"></span>
@@ -59,7 +59,7 @@
                   <div class="col-md-7 hidden-xs hidden-sm image-side" style="background-image:url(<?php the_field('project_background_image_1'); ?>);"></div>
                 </div><?php //work-summary ?>
               </div><?php //tab-pane ?>
-            <?php endwhile; endif; wp_reset_postdata(); ?>
+            <?php $i++; endwhile; endif; wp_reset_postdata(); ?>
 
           </div><?php //tab-content ?>
         </div><?php //content-side ?>
