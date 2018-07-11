@@ -50,8 +50,8 @@
               <div class="tab-content">
 
                 <?php $i=0; foreach($services as $service): ?>
-                  <div id="<?php echo sanitize_title($serivce['service_title']); ?>" class="tab-pane fade<?php if($i==0){ echo ' in active'; } ?>" role="tabpanel">
-                    <h2><?php $service['service_title']; ?></h2>
+                  <div id="<?php echo sanitize_title($service['service_title']); ?>" class="tab-pane fade<?php if($i==0){ echo ' in active'; } ?>" role="tabpanel">
+                    <h2><?php echo $service['service_title']; ?></h2>
                     <?php echo $service['service_content']; ?>
                   </div>
                 <?php $i++; endforeach; ?>
