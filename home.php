@@ -8,7 +8,7 @@
           </div>
           <article class="blog-post">
             <?php 
-              $first_post = new WP_Query(array('post_type' => 'posts', 'posts_per_page' => 1));
+              $first_post = new WP_Query(array('post_type' => 'post', 'posts_per_page' => 1));
               if($first_post->have_posts()): while($first_post->have_posts()): $first_post->the_post(); ?>
                 <h1><?php the_title(); ?></h1>
                 <?php the_content(); ?>
