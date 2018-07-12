@@ -89,7 +89,8 @@ body{
 }
 
 
-.aligncenter{
+.aligncenter,
+.alignnone{
   display:block;
   max-width:100%;
   height:auto;
@@ -1000,6 +1001,17 @@ blockquote::after{
   color:#5b5b5e;
 }
 
+.screen-reader-text{
+  border:0;
+  clip:rect(0,0,0,0);
+  height:1px;
+  margin:-1px;
+  overflow:hidden;
+  padding:0;
+  position:absolute;
+  width:1px;
+}
+
 
 #footer{
   background-color:#f19024;
@@ -1314,6 +1326,9 @@ blockquote::after{
     height:100%;
   }
   #what-we-do .col-sm-height{
+    vertical-align:top;
+  }
+  .col-sm-height.post-side{
     vertical-align:top;
   }
 }
