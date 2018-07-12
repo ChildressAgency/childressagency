@@ -245,7 +245,7 @@ jQuery(document).ready(function($){
   $teamMemberRows.forEach(function(row, index){
     var teamMembersScene = new ScrollMagic.Scene({
       triggerElement: row,
-      triggerHook: .5,
+      triggerHook: .7,
       reverse:false
     })
       .setTween(TweenMax.fromTo(row, .5, {autoAlpha:0, top:100}, {autoAlpha:1, top:0}))
