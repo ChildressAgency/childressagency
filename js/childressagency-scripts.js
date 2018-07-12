@@ -68,7 +68,7 @@ jQuery(document).ready(function($){
       preloaderOutAction
         .fromTo($('#pre-loader .wiper'), .2, { top: '100%' }, { top:'0%' })
         .set($('#pre-loader'), {backgroundColor: '#f19024' })
-        .to($('#pre-loader'), .2, { yPercent: '-100%' }, .2);
+        .to($('#pre-loader'), .2, { yPercent: '-100%' }, .3);
     }
 
     var preloaderOutAfter = new TimelineMax();
