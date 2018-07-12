@@ -1011,6 +1011,18 @@ blockquote::after{
   position:absolute;
   width:1px;
 }
+.page-numbers{
+  color:#000;
+  padding:8px;
+}
+.page-numbers.current{
+  color:#f19024;
+}
+.page-numbers:hover,
+.page-numbers:focus{
+  text-decoration:none;
+  color:#f19024;
+}
 
 
 #footer{
