@@ -87,6 +87,32 @@ body{
   right:0;
   z-index:9999;
 }
+.loading-text{
+  display:block;
+  text-align:center;
+  font-size:32px;
+  font-weight:900;
+  color:#000;
+  animation-name:pulse;
+  animation-duration:1.5s;
+  animation-iteration-count:infinite;
+}
+.pre-loader .loading-text{
+  color:#fff;
+}
+@keyframes pulse{
+  0%{ opacity:1; }
+  40%{ opacity: .1; }
+  100%{ opacity:1; }
+}
+.pre-loader .wiper{
+  position:absolute;
+  height:100%;
+  width:100%;
+  left:0;
+  top:100%;
+  background-color:#f19024;
+}
 
 
 .aligncenter,

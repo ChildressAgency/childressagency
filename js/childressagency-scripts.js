@@ -1,6 +1,7 @@
 // full screen slider tutorial: https://designmodo.com/create-full-screen-slider/
 
 jQuery(document).ready(function($){
+  var loadingDiv = '<span class="loading-text">Loading...</span>';
   var loader = (function (window, $loadingScreen) {
     var elapsed = false;
     var loaded = false;
@@ -8,7 +9,7 @@ jQuery(document).ready(function($){
     setTimeout(function () {
       elapsed = true;
       if (loaded) {
-        removeLoader();
+        //removeLoader();
         loadComplete();
       }
     }, 300);
@@ -22,7 +23,7 @@ jQuery(document).ready(function($){
       
       loaded = true;
       if (elapsed) {
-        removeLoader();
+        //removeLoader();
         loadComplete();
       }
     });
@@ -52,9 +53,38 @@ jQuery(document).ready(function($){
 
   function loadComplete(){
     $('html, body').scrollTop(0);
-    var preloaderOutTl = new TimelineMax();
 
+    var preloaderOutSetup = new TimelineMax();
+    preloaderOutSetup
+      .set([$caseStudy1TopBlinder, $caseStudy1BottomBlinder], { height: blinderHeight })
+      .set($('body'), { className: '-=is-loading' })
+      .set($hpHero, { className: '+=is-loaded' });
+
+    var preloaderOutAction = new TimelineMax();
+    if($('.cs-pre-loader').length){
+      preloaderOutAction.to($('.cs-pre-loader'), .3, { width: 0, ease:Power1.easeOut });
+    }
+    else{
+      preloaderOutAction
+        .fromTo($('#pre-loader .wiper'), .2, { top: '100%' }, { top:'0%' })
+        .set($('#pre-loader'), {backgroundColor: '#f19024' })
+        .to($('#pre-loader'), .2, { yPercent: '-100%' }, .2);
+    }
+
+    var preloaderOutAfter = new TimelineMax();
+    preloaderOutAfter 
+      .staggerFromTo($sloganList, .3, { xPercent: '120%' }, { xPercent:0, ease:Power1.easeOut }, .3)
+      .set($hpHero, { className: '+=is-active' });
+
+    var preloaderOutTl = new TimelineMax();
     preloaderOutTl
+      .add(preloaderOutSetup)
+      .add(preloaderOutAction);
+    
+      if($('.hp-hero').length){
+        preloaderOutTl.add(preloaderOutAfter);
+      }
+    /*preloaderOutTl
       .set([$caseStudy1TopBlinder, $caseStudy1BottomBlinder], { height: blinderHeight})
       .set($('body'), { className: '-=is-loading' })
       .set($hpHero, { className: '+=is-loaded' })
@@ -62,7 +92,7 @@ jQuery(document).ready(function($){
       //.to($('#pre-loader'), 0.7, {opacity: 0, ease:Power4.easeInOut})
       //.set($('#pre-loader'), {className: '+=is-hidden'})
       .staggerFromTo($sloganList, .3, {xPercent: '120%'}, {xPercent: 0, ease:Power1.easeOut}, .3)
-      .set($hpHero, {className: '+=is-active'});
+      .set($hpHero, {className: '+=is-active'});*/
 
     return preloaderOutTl;
   }
@@ -306,7 +336,7 @@ jQuery(document).ready(function($){
     e.preventDefault();
     var page = find_page_number($(this));
     var $postList = $('.post-list');
-    var loadingDiv = '<div class="fa-3x text-center"><i class="fas fa-sync fa-spin"></i></div>';
+    //var loadingDiv = '<div class="fa-3x text-center"><i class="fas fa-sync fa-spin"></i></div>';
 
     $.ajax({
       url: ajaxpagination.ajaxurl,
@@ -317,8 +347,10 @@ jQuery(document).ready(function($){
         page: page
       },
       beforeSend: function(){
-        $postList.html(loadingDiv);
-        $('html, body').animate({ scrollTop:0}, 500);
+        $postList.contents().fadeOut('fast', function(){
+          $postList.html(loadingDiv);
+          $('html, body').animate({ scrollTop: 0 }, 500);
+        });
       },
       success: function(result){
         $postList.html(result);
@@ -330,7 +362,7 @@ jQuery(document).ready(function($){
     e.preventDefault();
     var post_id = $(this).data('post_id');
     var $blogPost = $('.blog-post');
-    var loadingDiv = '<div class="fa-3x text-center"><i class="fas fa-syc fa-spin"></i></div>';
+    //var loadingDiv = '<span class="loading-text">Loading...</span>';
 
     $.ajax({
       url: ajaxpagination.ajaxurl,
@@ -341,7 +373,10 @@ jQuery(document).ready(function($){
         post_id: post_id
       },
       beforeSend: function(){
-        $blogPost.html(loadingDiv);
+        $blogPost.contents().fadeOut('fast', function(){
+          $blogPost.html(loadingDiv);
+        });
+        //$blogPost.html(loadingDiv);
       },
       success: function(result){
         $blogPost.html(result);
