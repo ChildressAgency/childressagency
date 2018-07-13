@@ -1,7 +1,6 @@
 // full screen slider tutorial: https://designmodo.com/create-full-screen-slider/
 
 jQuery(document).ready(function($){
-  var loadingDiv = '<span class="loading-text">Loading...</span>';
   var loader = (function (window, $loadingScreen) {
     var elapsed = false;
     var loaded = false;
@@ -9,7 +8,7 @@ jQuery(document).ready(function($){
     setTimeout(function () {
       elapsed = true;
       if (loaded) {
-        //removeLoader();
+        removeLoader();
         loadComplete();
       }
     }, 300);
@@ -23,7 +22,7 @@ jQuery(document).ready(function($){
       
       loaded = true;
       if (elapsed) {
-        //removeLoader();
+        removeLoader();
         loadComplete();
       }
     });
@@ -53,38 +52,9 @@ jQuery(document).ready(function($){
 
   function loadComplete(){
     $('html, body').scrollTop(0);
-
-    var preloaderOutSetup = new TimelineMax();
-    preloaderOutSetup
-      .set([$caseStudy1TopBlinder, $caseStudy1BottomBlinder], { height: blinderHeight })
-      .set($('body'), { className: '-=is-loading' })
-      .set($hpHero, { className: '+=is-loaded' });
-
-    var preloaderOutAction = new TimelineMax();
-    if($('.cs-pre-loader').length){
-      preloaderOutAction.to($('.cs-pre-loader'), .3, { width: 0, ease:Power1.easeOut });
-    }
-    else{
-      preloaderOutAction
-        .fromTo($('#pre-loader .wiper'), .2, { top: '100%' }, { top:'0%' })
-        .set($('#pre-loader'), {backgroundColor: '#f19024' })
-        .to($('#pre-loader'), .2, { yPercent: '-100%' }, .3);
-    }
-
-    var preloaderOutAfter = new TimelineMax();
-    preloaderOutAfter 
-      .staggerFromTo($sloganList, .3, { xPercent: '120%' }, { xPercent:0, ease:Power1.easeOut }, .3)
-      .set($hpHero, { className: '+=is-active' });
-
     var preloaderOutTl = new TimelineMax();
+
     preloaderOutTl
-      .add(preloaderOutSetup)
-      .add(preloaderOutAction);
-    
-      if($('.hp-hero').length){
-        preloaderOutTl.add(preloaderOutAfter);
-      }
-    /*preloaderOutTl
       .set([$caseStudy1TopBlinder, $caseStudy1BottomBlinder], { height: blinderHeight})
       .set($('body'), { className: '-=is-loading' })
       .set($hpHero, { className: '+=is-loaded' })
@@ -92,7 +62,7 @@ jQuery(document).ready(function($){
       //.to($('#pre-loader'), 0.7, {opacity: 0, ease:Power4.easeInOut})
       //.set($('#pre-loader'), {className: '+=is-hidden'})
       .staggerFromTo($sloganList, .3, {xPercent: '120%'}, {xPercent: 0, ease:Power1.easeOut}, .3)
-      .set($hpHero, {className: '+=is-active'});*/
+      .set($hpHero, {className: '+=is-active'});
 
     return preloaderOutTl;
   }
@@ -245,7 +215,7 @@ jQuery(document).ready(function($){
   $teamMemberRows.forEach(function(row, index){
     var teamMembersScene = new ScrollMagic.Scene({
       triggerElement: row,
-      triggerHook: .7,
+      triggerHook: .5,
       reverse:false
     })
       .setTween(TweenMax.fromTo(row, .5, {autoAlpha:0, top:100}, {autoAlpha:1, top:0}))
@@ -279,28 +249,17 @@ jQuery(document).ready(function($){
   });
 
   //https://github.com/miguel-perez/smoothState.js
-  /*if(typeof $.fn.smoothState == "function"){
+  if(typeof $.fn.smoothState == "function"){
     $('#work-list-main').smoothState({
-      //debug:true,
       anchors: '.show-work-details',
-      cacheLength: 2,
       onStart: {
         duration: 1,
         render: function($container){
           $container.find('.wiper').animate({ width:'400%' }, 500);
         }
-      },
-      onReady:{
-        duration:0,
-        render: function($container, $newContent){
-          $container.html($newContent);
-        }
       }
     });
-  }*/
-  $('#work-list-main').on('click', '.show-work-details', function(e){
-    $(this).parents('.text-side').find('.wiper').animate({ width:'400%' }, 500);
-  });
+  }
 
   $('[data-toggle="offcanvas"]').on('click', function(){
     $('.row-offcanvas').toggleClass('active');
@@ -311,32 +270,16 @@ jQuery(document).ready(function($){
   });
 
   //blog ajax pagination
-  function find_page_number($clickedElement){
-    //element.find('span').remove();
-    //return parseInt(element.html());
-    var currentPage = $clickedElement.siblings('.current');
-    var currentPageNumber = parseInt(currentPage.text());
-    var currentElementText = $clickedElement.text();
-    var newPage = '';
-
-    if(currentElementText == '<<'){
-      newPage = currentPageNumber - 1;
-    }
-    else if (currentElementText == '>>'){
-      newPage = currentPageNumber + 1;
-    }
-    else{
-      newPage = currentElementText;
-    }
-
-    return parseInt(newPage);
+  function find_page_number(element){
+    element.find('span').remove();
+    return parseInt(element.html());
   }
 
-  $('.post-list').on('click', '.page-numbers', function(e){
+  $('.pagination').on('click', 'a', function(e){
     e.preventDefault();
-    var page = find_page_number($(this));
+    var page = find_page_number($(this).clone());
     var $postList = $('.post-list');
-    //var loadingDiv = '<div class="fa-3x text-center"><i class="fas fa-sync fa-spin"></i></div>';
+    var loadingDiv = '<div class="fa-3x text-center"><i class="fas fa-sync fa-spin"></i></div>';
 
     $.ajax({
       url: ajaxpagination.ajaxurl,
@@ -347,10 +290,7 @@ jQuery(document).ready(function($){
         page: page
       },
       beforeSend: function(){
-        $postList.contents().fadeOut('fast', function(){
-          $postList.html(loadingDiv);
-          $('html, body').animate({ scrollTop: 0 }, 500);
-        });
+        $postList.html(loadingDiv);
       },
       success: function(result){
         $postList.html(result);
@@ -361,8 +301,8 @@ jQuery(document).ready(function($){
   $('.post-list').on('click', '.view-post', function(e){
     e.preventDefault();
     var post_id = $(this).data('post_id');
-    var $blogPost = $('.blog-post');
-    //var loadingDiv = '<span class="loading-text">Loading...</span>';
+    var blogPost = $('.blog-post');
+    var loadingDiv = '<div class="fa-3x text-center"><i class="fas fa-syc fa-spin"></i></div>';
 
     $.ajax({
       url: ajaxpagination.ajaxurl,
@@ -373,10 +313,7 @@ jQuery(document).ready(function($){
         post_id: post_id
       },
       beforeSend: function(){
-        $blogPost.contents().fadeOut('fast', function(){
-          $blogPost.html(loadingDiv);
-        });
-        //$blogPost.html(loadingDiv);
+        $blogPost.html(loadingDiv);
       },
       success: function(result){
         $blogPost.html(result);

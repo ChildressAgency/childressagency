@@ -1,0 +1,26 @@
+<div id="application" class="contact-form">
+  <div class="form-group">
+    <label for="your-name" class="sr-only">Your Name</label>
+    [text* your-name id:your-name class:form-control placeholder "Name*"]
+  </div>
+
+  <div class="form-group">
+    <label for="your-email" class="sr-only">Your Email</label>
+    [email* your-email id:your-email class:form-control placeholder "Email*"]
+  </div>
+
+  <div class="form-group">
+    <label for="position-title" class="control-label" style="display:block; font-weight:normal;">Position Applying For:</label>[text* position-title default:get id:position-title class:form-control]
+  </div>
+
+  <div class="form-group">
+    <label for="your-message" class="control-label" style="display:block; font-weight:normal;">Message / Cover Letter</label>[textarea your-message id:your-message class:form-control]
+  </div>
+
+  <div class="form-group">
+    <label for="resume" class="control-label" style="display:block; font-weight:normal;">Upload Your Resume*</label>
+    [file* resume id:resume filetypes:pdf|doc|docx]
+  </div>
+
+  [submit class:btn-main class:btn-alt "Submit"]
+</div>

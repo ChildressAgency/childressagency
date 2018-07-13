@@ -1,0 +1,32 @@
+<section class="contact-form">
+  <div class="form-group">
+    <label for="your-name" class="sr-only">Name</label>
+    [text* your-name id:your-name class:form-control placeholder "Name*"]
+  </div>
+  <div class="form-group">
+    <label for="company" class="sr-only">Company</label>
+    [text company id:company class:form-control placeholder "Company"]
+  </div>
+  <div class="form-group">
+    <label for="phone" class="sr-only">Phone</label>
+    [tel phone id:phone class:form-control placeholder "Phone"]
+  </div>
+  <div class="form-group">
+    <label for="your-email" class="sr-only">Email</label>
+    [email* your-email id:your-email class:form-control placeholder "Email*"]
+  </div>
+  <div class="form-group">
+    <label for="message" class="sr-only">Message</label>
+    [textarea message x3 id:message class:form-control placeholder "Message"]
+  </div>
+  <div class="form-group">
+    <label for="budget" class="budget-slider-label">Approximate Budget: <span id="budget-value">$<span>3,000</span></span></label>
+    [text budget id:budget class:budget-slider]
+  </div>
+  <div class="form-group">
+    [checkbox focus "Brand Identity" "SEO" "Web Design" "Video / Photography" "Mobile Apps" "Social Media" "Graphic Design" "Print & Promotional"]
+  </div>
+  <div class="form-group text-center">
+    [submit class:btn-main class:btn-alt "Let's Get Started"]
+  </div>
+</section>
